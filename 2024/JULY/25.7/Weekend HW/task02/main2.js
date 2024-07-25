@@ -11,6 +11,7 @@
 
       // A:
       //let a = `=` // the assignment of `=`
+      //console.log(a)
 
 //    [Learn more about assignment operators](https://www.w3schools.com/js/js_assignment.asp)
 
@@ -19,6 +20,7 @@
 
    // A:
      // let a=5;
+     // console.log(a)
 
 //    [Learn more about variable assignment](https://www.w3schools.com/js/js_assignment.asp)
 

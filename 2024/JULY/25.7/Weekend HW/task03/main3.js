@@ -110,8 +110,9 @@
 //
 // A: it is the exact opposite of === and what it defines is that it checks that the value or the string is not similar 
 // for example: let a=5
-               //  let b =6
-// if we will check if (a!==b) it will return as true
+            //  let b =6
+// console.log(a!==b) if we will check if (a!==b) it will return as true
+
 
 //     [Learn more about strict inequality](https://www.w3schools.com/js/js_comparisons.asp)
 

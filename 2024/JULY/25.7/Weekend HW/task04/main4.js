@@ -97,6 +97,7 @@
 //     Hint: There's a specific type of quotation mark that allows this easily.
 
 // let car {type:`Jaguar`, model:`F-Type`, color:`MidnightBlue`}
+// console.log(car)
 
 //     [W3Schools: JavaScript Template Literals](https://www.w3schools.com/js/js_string_templates.asp)
 
@@ -166,6 +167,7 @@
 //        } else {
 //          text = "x is defined";
 //       }
+//       console.log(x)
 
 //     [W3Schools: JavaScript undefined](https://www.w3schools.com/jsref/jsref_undefined.asp)
 
