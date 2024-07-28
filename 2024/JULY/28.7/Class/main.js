@@ -23,3 +23,9 @@
 // for (i=0; i<=5; i++){
 // console.log(`*`.repeat(i));
 // }
+
+//----------------------------------
+// let counter=1
+// do{
+//     console.log(counter++;)
+// } while(counter<=5) 
