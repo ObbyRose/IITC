@@ -185,58 +185,150 @@ for (let i = 0; i<randomNum.length; i++){
 
 // 12. Use the `slice()` method to create a new array containing the second and third elements of your `fruits` array.
 //     Hint: `arrayName.slice(startIndex, endIndex)` extracts a portion of an array.
+
+console.log(fruits.slice(1,2));
+
 //     [Learn more about slice()](https://www.w3schools.com/jsref/jsref_slice_array.asp)
 
 // 13. Create an array of numbers. Use the `filter()` method to create a new array containing only the even numbers.
 //     Hint: The callback function for `filter()` should return `true` for even numbers.
-//     [Learn more about filter()](https://www.w3schools.com/jsref/jsref_filter.asp)
+
+let filterNum=[2,5,9,10]
+let evenNum= filterNum.filter (function (number){
+   return number % 2===0;
+})
+console.log(evenNum);
+
+
+//  Lea   [rn more about filter()](https://www.w3schools.com/jsref/jsref_filter.asp)
 
 // 14. Use the `join()` method to convert your `colors` array into a string where colors are separated by commas.
 //     Hint: `arrayName.join(separator)` joins all elements into a string.
+
+let colorStr = colors.join(',')
+console.log(colorStr);
+
 //     [Learn more about join()](https://www.w3schools.com/jsref/jsref_join.asp)
 
 // 15. Create two arrays of numbers. Use the `concat()` method to combine them into a single array.
 //     Hint: `array1.concat(array2)` combines two arrays.
+
+let array1=[5,6,7]
+let array2=[8,9,15]
+let newArray= array2.concat(array1)
+console.log(newArray);
+
 //     [Learn more about concat()](https://www.w3schools.com/jsref/jsref_concat_array.asp)
 
 // 16. Use the `reverse()` method to reverse the order of elements in your `fruits` array.
 //     Hint: `arrayName.reverse()` reverses the array in place.
+
+fruits= ['apple','banana','kiwi']
+let reverseFruits=fruits.reverse()
+console.log(reverseFruits);
+
 //     [Learn more about reverse()](https://www.w3schools.com/jsref/jsref_reverse.asp)
 
 // 17. Create an array of names. Use the `map()` method to create a new array where each name is prefixed with "Hello, ".
 //     Hint: The callback function for `map()` should return the modified string.
+
+let names=['John', 'Rich', 'Thompson']
+let nameArray=names.map(function(allNames){
+return 'Hello '+allNames
+})
+console.log(nameArray);
+
 //     [Learn more about map()](https://www.w3schools.com/jsref/jsref_map.asp)
 
 // 18. Use the `every()` method to check if all numbers in an array are greater than 0.
 //     Hint: The callback function for `every()` should return a boolean.
+
+let greaterNum=[2,5,56,-5]
+let areGreater=greaterNum.every(function(areThey){
+   return areThey>0
+})
+console.log(areGreater); // will return false since not ALL of them are greater if I want I could differentiate between them by using a simple if statement
+
 //     [Learn more about every()](https://www.w3schools.com/jsref/jsref_every.asp)
 
 // 19. Create an array of numbers. Use the `find()` method to get the first number greater than 10.
 //     Hint: The callback function for `find()` should return `true` for the desired element.
+
+greaterNum;
+let greaterThan=greaterNum.find(function(isGreaterThan){
+   return isGreaterThan>10;
+
+})
+console.log(greaterThan);
+
 //     [Learn more about find()](https://www.w3schools.com/jsref/jsref_find.asp)
 
 // 20. Use the `some()` method to check if your `fruits` array contains the fruit "banana".
 //     Hint: The callback function for `some()` should return `true` if the element is "banana".
+
+let check=fruits.some(function(CheckFruits){
+   return CheckFruits="banana"
+
+})
+console.log(check);
+
 //     [Learn more about some()](https://www.w3schools.com/jsref/jsref_some.asp)
 
 // 21. Create an array of numbers. Use the `reduce()` method to calculate the product of all numbers in the array.
 //     Hint: The callback function for `reduce()` should multiply the accumulator by the current value.
+
+let reduceNum=[5,10,15]
+let multiplyNum=reduceNum.reduce(function(multiply,mNum){
+   return multiply*mNum
+})
+console.log(multiplyNum);
+
 //     [Learn more about reduce()](https://www.w3schools.com/jsref/jsref_reduce.asp)
 
 // 22. Use a `for` loop to create an array containing the squares of numbers from 1 to 10.
 //     Hint: Initialize an empty array and use `push()` inside the loop to add squared values.
+let squares=[]
+for(i=0; i<=10; i++){
+   squares.push(i*i)
+}
+console.log(squares);
+
 //     [Learn more about for loops](https://www.w3schools.com/js/js_loop_for.asp)
 
 // 23. Create an array of words. Use the `filter()` method to create a new array containing only words with more than 5 letters.
 //     Hint: The callback function for `filter()` should check the length of each word.
+
+let letterWords=['change','toupee','fart']
+let filteredWords=letterWords.filter(function(filtering){
+   return filtering.length>4
+})
+console.log(filteredWords);
+
 //     [Learn more about filter()](https://www.w3schools.com/jsref/jsref_filter.asp)
 
 // 24. Use the `includes()` method to check if your `colors` array includes the color "purple".
 //     Hint: `arrayName.includes(element)` returns `true` if the element is in the array.
+
+let checkPurple=colors.includes('purple')
+console.log(checkPurple);
+
 //     [Learn more about includes()](https://www.w3schools.com/jsref/jsref_includes_array.asp)
 
 // 25. Create a 2D array representing a tic-tac-toe board. Fill it with "X", "O", and empty strings. Then, write a function that console.logs the board in a readable format.
 //     Hint: Use nested arrays to create a 2D array. Use nested loops to print the board.
+let board = [
+   ['X', '','X'],
+   ['O', '', ''],
+   [`O`,`O`,'X']
+];
+function printBoard(board) {
+   for (let row of board) {
+       console.log(row.join(' | '));
+       console.log('-'.repeat(row.length * 4 - 1));
+   }
+}
+printBoard(board)
+
 //     [Learn more about multidimensional arrays](https://www.w3schools.com/js/js_array_methods.asp)
 
 // Remember to test your code and experiment with different inputs!
