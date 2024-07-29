@@ -324,7 +324,7 @@ let board = [
 function printBoard(board) {
    for (let row of board) {
        console.log(row.join(' | '));
-       console.log('-'.repeat(row.length * 4 - 1));
+       console.log('-'.repeat(row.length * 3));
    }
 }
 printBoard(board)

@@ -322,6 +322,20 @@ for (let i = 0; i < n; i++) {
 
 // // 19. Write a do...while loop that simulates flipping a coin until it lands on heads 3 times in a row.
 // //     Hint: Use Math.random() to simulate a coin flip and keep a counter for consecutive heads.
+let consecutiveHeads=0
+do{
+    let isHead=math.random()>0.5
+    if(isHead===true){
+    consecutiveHeads++;
+    console.log(`Heads`);
+    } else {
+     consecutiveHeads=0
+     console.log(`Tails`);
+    }
+
+} while(consecutiveHeads<3);
+
+
 // //     [Learn more about do...while loops](https://www.w3schools.com/jsref/jsref_dowhile.asp)
 
 // // 20. Create a for loop that calculates the sum of the squares of numbers from 1 to n.
