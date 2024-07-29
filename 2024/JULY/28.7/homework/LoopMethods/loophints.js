@@ -340,10 +340,38 @@ do{
 
 // // 20. Create a for loop that calculates the sum of the squares of numbers from 1 to n.
 // //     Hint: Square each number and add it to a running total.
+
+function sumOfSquares(n) {
+    let total = 0;
+    for (let i = 1; i <= n; i++) {
+        total += i * i;
+    }
+    return total;
+}
+
+result = sumOfSquares(5);
+console.log(result); // Output: 55
+
+
 // //     [Learn more about for loops](https://www.w3schools.com/js/js_loop_for.asp)
 
 // // 21. Use a while loop to find the smallest number of terms in the series 1 + 2 + 3 + ... that exceeds a given value.
 // //     Hint: Keep adding terms to a sum until it exceeds the given value.
+
+function findSmallestNumberOfTerms(limit) {
+    let sum = 0;
+    let term = 1;
+    while (sum <= limit) {
+        sum += term;
+        term++;
+    }
+    return term - 1;
+}
+
+result = findSmallestNumberOfTerms(15);
+console.log(result); 
+
+
 // //     [Learn more about while loops](https://www.w3schools.com/js/js_loop_while.asp)
 
 // // 22. Write a for loop that prints a diamond pattern of asterisks.
@@ -365,59 +393,27 @@ do{
 // // Remember to use only concepts that have been covered so far, focusing on loops and basic arithmetic operations!
 
 
-
-// # JavaScript Loops Exercises
-
-// ## 'for' Loop Exercises
-
-// 1. Write a loop that counts from 10 to 1 (backwards).
-//    Hint: Start your counter at 10 and decrement it in each iteration.
-//    [Learn more about for loops](https://www.w3schools.com/js/js_loop_for.asp)
-
-// 2. Create a loop that prints only even numbers from 2 to 20.
-//    Hint: Start at 2 and increment by 2 in each iteration.
-//    [Learn more about for loops](https://www.w3schools.com/js/js_loop_for.asp)
-
-// 3. Make a loop that adds up all numbers from 1 to 10 and prints the sum.
-//    Hint: Use a variable to keep track of the sum and add each number in the loop.
-//    [Learn more about for loops](https://www.w3schools.com/js/js_loop_for.asp)
-
-// 4. Write a loop that prints the 5 times table (5, 10, 15, ..., 50).
-//    Hint: Multiply each number in the loop by 5.
-//    [Learn more about for loops](https://www.w3schools.com/js/js_loop_for.asp)
-
-// 5. Create a loop that prints this pattern:
-//    ```
-//    *
-//    **
-//    ***
-//    ****
-//    *****
-//    ```
-//    Hint: Use nested loops - one for rows and one for columns.
-//    [Learn more about nested loops](https://www.w3schools.com/js/js_loop_for.asp)
-
 // ## 'while' Loop Exercises
 
 // 1. Write a while loop that prints numbers from 1 to 10.
 //    Hint: Initialize a counter before the loop and increment it inside.
 
-// let pNum=1
-// while(pNum<10){
-//     pNum++;
-//     console.log(pNum);
-// }
+let pNum=1
+while(pNum<10){
+    pNum++;
+    console.log(pNum);
+}
 
 //    [Learn more about while loops](https://www.w3schools.com/js/js_loop_while.asp)
 
 // 2. Create a while loop that doubles a number until it's bigger than 100.
 //    Hint: Start with 1 and multiply by 2 in each iteration.
 
-// let doubleNum=1
-// while(doubleNum<=100){
-//     console.log(doubleNum);
-//     doubleNum=doubleNum*2
-// }
+let doubleNum=1
+while(doubleNum<=100){
+    console.log(doubleNum);
+    doubleNum=doubleNum*2
+}
 
 
 //    [Learn more about while loops](https://www.w3schools.com/js/js_loop_while.asp)
@@ -425,25 +421,25 @@ do{
 // 3. Make a while loop that counts down from 20 to 0.
 //    Hint: Start with 20 and decrement in each iteration.
 
-// let countDown=21
-// while (countDown>=1){
-//     countDown--;
-//     console.log(countDown);
-// }
+let countDown=21
+while (countDown>=1){
+    countDown--;
+    console.log(countDown);
+}
 
 //    [Learn more about while loops](https://www.w3schools.com/js/js_loop_while.asp)
 
 // 4. Write a while loop that keeps asking for a password until the correct one is entered.
 //    Hint: Use prompt() to get user input and compare it to the correct password.
 
-// let correctPass=`1234`
-// let inputPass=``
-// while(inputPass!==correctPass){
-//     inputPass= prompt('Enter the password')
-//     if (inputPass !== correctPass) 
-//         console.log('Incorrect password. Please try again.');
-// }
-// console.log(`Password successful`);
+let correctPass=`1234`
+let inputPass=``
+while(inputPass!==correctPass){
+    inputPass= prompt('Enter the password')
+    if (inputPass !== correctPass) 
+        console.log('Incorrect password. Please try again.');
+}
+console.log(`Password successful`);
 
 //    [Learn more about while loops](https://www.w3schools.com/js/js_loop_while.asp)
 
