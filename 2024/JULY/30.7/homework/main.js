@@ -234,16 +234,36 @@ findFrequency(`Hello`); // come back to solve
 // Store all elements in a new 1D array and print the result.
 // Example Output:
 // For arr = [[1, 2], [3, 4], [5, 6]], output: [1, 2, 3, 4, 5, 6]
+// option 1 with loops
+// function flatten2DArray(twoDArray) {
+//     let oneDArray = [];
+//     for (let i = 0; i < twoDArray.length; i++) {
+//       for (let j = 0; j < twoDArray[i].length; j++) {
+//         oneDArray.push(twoDArray[i][j]);
+//       }
+//     }
+//     return oneDArray;
+//   }
 
-let arr2d = [
-  [1, 2],
-  [3, 4],
-  [5, 6],
-];
-function arr1d(nestedArr) {
-  return console.log(nestedArr.flat());
-}
-arr1d(arr2d);
+//   let arr = [
+//     [1, 2],
+//     [3, 4],
+//     [5, 6]
+//   ];
+
+//   let flattenedArray = flatten2DArray(arr);
+//   console.log(flattenedArray);
+
+// option 2 without loops
+// let arr2d = [
+//   [1, 2],
+//   [3, 4],
+//   [5, 6],
+// ];
+// function arr1d(nestedArr) {
+//   return console.log(nestedArr.flat());
+// }
+// arr1d(arr2d);
 
 // Exercise 10: Matrix Transpose
 // Objective: Transpose a given matrix.
@@ -254,13 +274,24 @@ arr1d(arr2d);
 // Example Output:
 // For matrix = [[1, 2, 3], [4, 5, 6]], output: [[1, 4], [2, 5], [3, 6]]
 
+function transposeMatrix(matrix) {
+  let rows = matrix.length;
+  let columns = matrix[0].length;
+  let transposed = [];
+  for (let i = 0; i < columns; i++) {
+    transposed[i] = [];
+    for (let j = 0; j < rows; j++) {
+      transposed[i][j] = matrix[j][i];
+    }
+  }
+  return transposed;
+}
+
 let matrix = [
   [1, 2, 3],
   [4, 5, 6],
 ];
-function matrixTranspose() {
-  for (i = 0; i <= matrix.length; i++) {}
-}
+console.log(transposeMatrix(matrix));
 
 // Exercise 11: Palindrome Check
 // Objective: Check if a given string is a palindrome.
@@ -272,6 +303,20 @@ function matrixTranspose() {
 // For input = "radar", output: Palindrome
 // For input = "hello", output: Not a palindrome
 
+// function checkPalindrome(str){
+//     let isPalindrome=""
+//     for (let i=0; i<str.length;i++){
+//         isPalindrome[i]=str
+//         for(let j=0; j<isPalindrome.length; j++){
+//             if( isPalindrome[i][j]=str[j][i])
+//                 return true
+//                 else
+//                 return false
+//         }
+//     }
+// }
+// console.log(checkPalindrome("radar")); // was unable to do
+
 // Exercise 12: Find Common Elements in Two Arrays
 // Objective: Find common elements between two arrays.
 // Instructions:
@@ -279,6 +324,28 @@ function matrixTranspose() {
 // Use nested loops to find and print the common elements.
 // Example Output:
 // For arr1 = [1, 2, 3, 4] and arr2 = [3, 4, 5, 6], output: Common elements: 3, 4
+
+function findCommonElements(arr1, arr2) {
+  let commonElements = [];
+
+  for (let i = 0; i < arr1.length; i++) {
+    for (let j = 0; j < arr2.length; j++) {
+      if (arr1[i] === arr2[j]) {
+        if (!commonElements.includes(arr1[i])) {
+          commonElements.push(arr1[i]);
+        }
+      }
+    }
+  }
+
+  return commonElements;
+}
+
+let arr1 = [1, 2, 3, 4];
+let arr2 = [3, 4, 5, 6];
+
+let common = findCommonElements(arr1, arr2);
+console.log("Common elements:", common);
 
 // Exercise 13: Check for Prime Numbers in a Range
 // Objective: Write a program to find all prime numbers in a given range.
@@ -289,6 +356,29 @@ function matrixTranspose() {
 // Example Output:
 // For range = (10, 20), output: Prime numbers: 11, 13, 17, 19
 
+function printPrimesInRange(start, end) {
+  function isPrime(num) {
+    if (num <= 1) return false;
+    if (num === 2) return true;
+    if (num % 2 === 0) return false;
+
+    for (let i = 3; i <= Math.sqrt(num); i += 2) {
+      if (num % i === 0) return false;
+    }
+
+    return true;
+  }
+  let primes = [];
+  for (let num = start; num <= end; num++) {
+    if (isPrime(num)) {
+      primes.push(num);
+    }
+  }
+
+  console.log("Prime numbers:", primes);
+}
+printPrimesInRange(10, 20);
+
 // Exercise 14: Sort a 2D Array by Row Sum
 // Objective: Sort the rows of a 2D array based on the sum of their elements.
 // Instructions:
@@ -297,3 +387,14 @@ function matrixTranspose() {
 // Sort the rows based on their sum and print the sorted array.
 // Example Output:
 // For arr = [[3, 1, 2], [1, 4, 5], [2, 3, 1]], output: [[2, 3, 1], [3, 1, 2], [1, 4, 5]]
+// didnt make it
+// function sort2DArrayByRowSum(arr) {
+//   let rowSums = [];
+
+//   for (let i = 0; i < arr.length; i++) {
+//     let sum = 0;
+//     for (let j = 0; j < arr[i].length; j++) {
+//       sum += arr[i][j];
+//     }
+//     rowSums[i] = sum;
+//   }
