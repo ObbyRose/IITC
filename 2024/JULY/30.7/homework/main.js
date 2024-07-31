@@ -303,19 +303,16 @@ console.log(transposeMatrix(matrix));
 // For input = "radar", output: Palindrome
 // For input = "hello", output: Not a palindrome
 
-// function checkPalindrome(str){
-//     let isPalindrome=""
-//     for (let i=0; i<str.length;i++){
-//         isPalindrome[i]=str
-//         for(let j=0; j<isPalindrome.length; j++){
-//             if( isPalindrome[i][j]=str[j][i])
-//                 return true
-//                 else
-//                 return false
-//         }
-//     }
-// }
-// console.log(checkPalindrome("radar")); // was unable to do
+function checkPalindrome(str) {
+  let length = str.length;
+  for (let i = 0; i < length; i++) {
+    for (let j = 0; j < 1; j++) {
+      if (str[i] !== str[length - 1 - i]) return false;
+    }
+  }
+  return true;
+}
+console.log(checkPalindrome("radar"));
 
 // Exercise 12: Find Common Elements in Two Arrays
 // Objective: Find common elements between two arrays.
@@ -387,7 +384,7 @@ printPrimesInRange(10, 20);
 // Sort the rows based on their sum and print the sorted array.
 // Example Output:
 // For arr = [[3, 1, 2], [1, 4, 5], [2, 3, 1]], output: [[2, 3, 1], [3, 1, 2], [1, 4, 5]]
-// didnt make it
+// didn't make it
 // function sort2DArrayByRowSum(arr) {
 //   let rowSums = [];
 
