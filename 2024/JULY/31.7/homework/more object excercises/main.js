@@ -7,12 +7,32 @@
 
 // **Hint:** Use the `length` property of the array to get the number of songs.
 
+let playlist = {
+  name: `Afrobeats Mix`,
+  songs: [`Free Mind`, `Vanilla`, `Supalife`],
+  duration: 9,
+};
+playlist.songs.push(`Feel`);
+playlist.duration += 3;
+let AvgLength = playlist.duration / playlist.songs.length;
+console.log(AvgLength);
+
 // ## Exercise 12: Bank Account
 // 1. Create an object called `bankAccount` with properties: accountNumber (string), balance (number), and isActive (boolean).
 // 2. Create a method called `deposit` that takes an amount and adds it to the balance.
 // 3. Create another method called `withdraw` that takes an amount and subtracts it from the balance, but only if the balance is sufficient.
 
 // **Hint:** Use `this` keyword inside methods to access object properties.
+
+let bankAccount = { accountNumber: `3555`, balance: 15000, isActive: true };
+
+// bankAccount.balance += Number(prompt(`Deposit amount`))
+
+console.log(bankAccount.balance);
+
+// bankAccount.balance -= Number(prompt(`withdraw amount`));
+
+console.log(bankAccount.balance);
 
 // ## Exercise 13: Circle
 // 1. Create an object called `circle` with properties: radius (number) and color (string).
@@ -21,6 +41,18 @@
 
 // **Hint:** Use `Math.PI` for the value of π.
 
+let circle = { radius: 5, color: `blue` };
+
+circle.calcArea = function (area) {
+  return (area = (Math.PI * circle.radius) ^ 2);
+};
+console.log(circle.calcArea(5));
+
+circle.calcCircumf = function (circumference) {
+  return (circumference = 2 * Math.PI * circle.radius);
+};
+console.log(circle.calcCircumf(10));
+
 // ## Exercise 14: Student Grade Calculator
 // 1. Create an object called `student` with properties: name (string) and grades (array of numbers).
 // 2. Add a method called `calculateAverage` that returns the average of the student's grades.
@@ -28,12 +60,60 @@
 
 // **Hint:** Use array methods like `reduce()` to calculate the average.
 
+let student = {
+  name: `Tal Maman`,
+  grades: [90, 85, 95, 100],
+
+  calcAvg: function (grades) {
+    let avgSum = 0;
+    if (student.grades === 0) return 0;
+    let sum = grades.reduce(function (acc, grade) {
+      return acc + grade;
+    });
+    return sum / grades.length;
+  },
+
+  getLetterGrade: function (avg) {
+    if (avg >= 90) return `A`;
+    else if (avg >= 80) return `B`;
+    else if (avg >= 70) return `C`;
+    else if (avg >= 60) return `D`;
+    else return `F`;
+  },
+};
+
+console.log(student.calcAvg(student.grades));
+console.log(student.getLetterGrade(student.calcAvg(student.grades)));
+
 // ## Exercise 15: To-Do List
 // 1. Create an object called `todoList` with properties: tasks (array of strings) and completedTasks (array of strings).
 // 2. Add methods: `addTask(task)`, `completeTask(task)`, and `displayTasks()`.
 // 3. `completeTask(task)` should move a task from tasks to completedTasks.
 
 // **Hint:** Use array methods like `push()` and `filter()`.
+
+let todoList = {
+  tasks: [`Clean Room`, `Pack Suitcase`, `Laundry`],
+  completedTasks: [`Clean garage`, `Take Dog Out`],
+  addTask: function (task) {
+    return this.tasks.push(task);
+  },
+  finishedTask: function (task) {
+    return this.completedTasks.push(task);
+  },
+  displayTasks: function () {
+    return console.log(this.tasks);
+  },
+  moveTasks: function (task) {
+    let idx = this.tasks.indexOf(task);
+    console.log(idx);
+    if (idx !== -1) this.completedTasks.push(this.tasks[idx]);
+    this.tasks.splice(idx, 1);
+    return this.completedTasks;
+  },
+};
+console.log(todoList.moveTasks(`Clean Room`));
+console.log(todoList.displayTasks());
 
 // ## Exercise 16: Library Book
 // 1. Create an object called `book` with properties: title (string), author (string), isbn (string), and isAvailable (boolean).
