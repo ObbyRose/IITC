@@ -193,9 +193,9 @@ for (let i = 0; i < 3; i++) {
 //     ```
 
 for (let i = 0; i < 3; i++) {
-  let line = ``;
+  let line = "";
   for (let j = 0; j < 3; j++) {
-    line += "* ";
+    line += "*";
   }
   console.log(line);
 }

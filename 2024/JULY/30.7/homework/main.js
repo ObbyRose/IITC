@@ -218,11 +218,24 @@ console.log(result);
 // For input = "hello", output: h: 1, e: 1, l: 2, o: 1
 
 function findFrequency(str) {
-  let count = 0;
+  let freqObject = {};
   for (i = 0; i < str.length; i++) {
-    let char = str[i];
-    console.log(char);
+    console.log(str[i]);
+    if (!freqObject[str[i]])
+      for (let j = 0; j < str.length; j++) {
+        console.log(`scanning letter ${str[i]} on ${str[j]}`);
+        if (str[i] === str[j]) {
+          console.log(`Equal`);
+          if (!freqObject[str[i]]) {
+            freqObject[str[i]] = 1;
+          } else {
+            freqObject[str[i]]++;
+          }
+        }
+      }
   }
+  console.log(`End of scanning`);
+  console.log(freqObject);
 }
 findFrequency(`Hello`); // come back to solve
 
