@@ -282,6 +282,18 @@ for (let i = 0; i < 3; i++) {
 // Print a hollow right-angled triangle of asterisks with 4 rows.
 
 // Hint: Print asterisks only when it's the first or last column, or the last row.
+let rows = 4;
+for (let i = 0; i <= rows; i++) {
+  let line = ``;
+  for (let j = 0; j < rows; j++) {
+    if (j === 0 || j === i || i === rows) {
+      line += ` *`;
+    } else {
+      line += ` `;
+    }
+  }
+  console.log(line);
+}
 
 // [Learn about logical operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#logical_operators)
 
@@ -289,6 +301,15 @@ for (let i = 0; i < 3; i++) {
 // Print a 4x4 grid where each cell contains the smaller of its row or column index.
 
 // Hint: Use Math.min() to compare row and column indices.
+// We need to compare i and j's index
+
+for (let i = 0; i <= 4; i++) {
+  let index = ``;
+  for (let j = 0; j <= 4; j++) {
+    index += ` ` + Math.min(i, j);
+  }
+  console.log(index);
+}
 
 // [Learn about Math.min()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min)
 
@@ -297,6 +318,14 @@ for (let i = 0; i < 3; i++) {
 
 // Hint: Use Math.max() to compare row and column indices.
 
+for (let i = 0; i <= 4; i++) {
+  let index = ``;
+  for (let j = 0; j <= 4; j++) {
+    index += ` ` + Math.max(i, j);
+  }
+  console.log(index);
+}
+
 // [Learn about Math.max()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max)
 
 // ## Exercise 19
@@ -304,12 +333,36 @@ for (let i = 0; i < 3; i++) {
 
 // Hint: Use String.fromCharCode() to convert numbers to letters.
 
+let currentCharCode = 65; //  letter A
+for (let i = 1; i <= 4; i++) {
+  let line = ``;
+  for (let j = 0; j < i; j++) {
+    line += String.fromCharCode(currentCharCode);
+    currentCharCode++;
+    if (currentCharCode > 90) {
+      currentCharCode = 65;
+    }
+  }
+  console.log(line);
+}
+
 // [Learn about String.fromCharCode()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/fromCharCode)
 
 // ## Exercise 20
 // Print a 3x3 grid where each cell contains the sum of all numbers from 1 to the product of its indices.
 
 // Hint: Use a nested loop to calculate the sum for each cell.
+
+for (let i = 1; i <= 3; i++) {
+  let line = ``;
+  for (let j = 1; j <= 3; j++) {
+    let P = i * j;
+    let sum = (P * (P + 1)) / 2 + ` `;
+    line += sum.toString();
+  }
+
+  console.log(line);
+}
 
 // [Learn about nested loops](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration#nested_loops)
 
@@ -325,12 +378,35 @@ for (let i = 0; i < 3; i++) {
 
 // Hint: Combine an increasing triangle with a decreasing triangle.
 
+for (let i = 0; i < 5; i++) {
+  let stars = ``;
+  for (let j = 0; j <= i; j++) {
+    stars += `* `;
+  }
+  console.log(stars);
+}
+for (let i = 5; i >= 1; i--) {
+  let stars = ``;
+  for (let j = 1; j <= i; j++) {
+    stars += `* `;
+  }
+  console.log(stars);
+}
+
 // [Learn about complex patterns](https://www.programiz.com/javascript/examples/pyramid-pattern)
 
 // ## Exercise 23
 // Print a 4x4 grid where each cell contains the result of its row index raised to the power of its column index.
 
 // Hint: Use the ** operator for exponentiation.
+
+for (let i = 1; i <= 4; i++) {
+  let index = ``;
+  for (let j = 1; j <= 4; j++) {
+    index += ` ` + j ** i;
+  }
+  console.log(index);
+}
 
 // [Learn about the exponentiation operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Exponentiation)
 
