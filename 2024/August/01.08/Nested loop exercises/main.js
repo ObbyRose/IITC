@@ -415,6 +415,14 @@ for (let i = 1; i <= 4; i++) {
 
 // Hint: Initialize a counter with 10 and decrement it in each iteration.
 
+for (let i = 10; i > 0; i--) {
+  let counter = 0;
+  for (let j = 0; j < i; j++) {
+    counter += `${i} `;
+  }
+  console.log(counter);
+}
+
 // [Learn about decrementing in loops](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration#for_statement)
 
 // ## Exercise 25
