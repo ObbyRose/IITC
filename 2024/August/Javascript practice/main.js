@@ -9,15 +9,22 @@ const numbers1 = [1, 2, 3, 4, 5];
 
 
 function sumArray(numbers) {
-  // your code here
+ let sum = 0
+ for (let i = 0; i < numbers.length; i++) {
+  
+  sum += numbers[i]
+  
+ }
+ return sum
 }
-// sumArray(numbers1)
+console.log(sumArray(numbers1))
 
 // 2. Reverse String
 const string1 = "hello";
 // TODO: Write a function to reverse a string
-function reverseString(str) {
-  // your code here
+function reverseString(str){
+
+
 }
 // reverseString(string1)
 
