@@ -7,26 +7,26 @@ const numbers1 = [1, 2, 3, 4, 5];
 
 // TODO: Write a function to sum all numbers in an array
 
-
 function sumArray(numbers) {
- let sum = 0
- for (let i = 0; i < numbers.length; i++) {
-  
-  sum += numbers[i]
-  
- }
- return sum
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
+  return sum;
 }
-console.log(sumArray(numbers1))
+console.log(sumArray(numbers1));
 
 // 2. Reverse String
 const string1 = "hello";
 // TODO: Write a function to reverse a string
-function reverseString(str){
-
-
+function reverseString(str) {
+  let newStr = ``;
+  for (let i = str.length - 1; i >= 0; i--) { 
+    newStr += str[i]; // or newString = newString + str[i];
 }
-// reverseString(string1)
+  return newStr;
+}
+console.log(reverseString(string1));
 
 // 3. Check Palindrome
 const string2 = "is man";
