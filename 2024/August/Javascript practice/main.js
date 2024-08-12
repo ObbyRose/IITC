@@ -21,20 +21,21 @@ const string1 = "hello";
 // TODO: Write a function to reverse a string
 function reverseString(str) {
   let newStr = ``;
-  for (let i = str.length - 1; i >= 0; i--) { 
+  for (let i = str.length - 1; i >= 0; i--) {
     newStr += str[i]; // or newString = newString + str[i];
-}
+  }
   return newStr;
 }
 console.log(reverseString(string1));
 
 // 3. Check Palindrome
-const string2 = "is man";
+const string2 = "racecar";
 // TODO: Write a function to check if a string is a palindrome
 function isPalindrome(str) {
-  // your code here
+  str.toLowerCase().split(``).reverse().join(``);
+  return str === str.split(``).reverse().join(``);
 }
-// isPalindrome(string2)
+console.log(isPalindrome(string2));
 
 // 4. Remove Duplicates
 const numbers2 = [1, 2, 2, 3, 4, 4, 5];
@@ -48,9 +49,14 @@ function removeDuplicates(arr) {
 const numbers3 = [2, 10, 5, 8, 1, 7, 4, 3, 9, 67, 3, 8, 2, 10, 5, 6, 1, 4, 9];
 // TODO: Write a function to find the maximum number in an array
 function findMax(arr) {
-  // your code here
+  let maxNum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (Math.max(arr[i]) > maxNum) 
+      maxNum = Math.max(arr[i]);
+  }
+  return maxNum;
 }
-// findMax(numbers3)
+console.log(findMax(numbers3));
 
 // 6. Average Age
 const people = [
