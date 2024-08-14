@@ -92,9 +92,23 @@ function filterByCategory(items, category) {
 const string3 = "josephino";
 // TODO: Write a function to count the number of vowels in a string
 function countVowels(str) {
-  // your code here
+  let letter = ``;
+  let count = 0;
+  for (let i = 0; i < str.length; i++) {
+    letter = str[i];
+    letter.toLowerCase();
+    if (
+      letter === `a` ||
+      letter === "e" ||
+      letter === `i` ||
+      letter === "o" ||
+      letter === "u"
+    )
+      count++;
+  }
+  return count;
 }
-// countVowels(string3)
+console.log(countVowels(string3));
 
 // 9. Merge Arrays
 const array1 = [1, 2, 3];
