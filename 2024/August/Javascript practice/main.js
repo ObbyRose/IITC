@@ -14,7 +14,7 @@ function sumArray(numbers) {
   }
   return sum;
 }
-console.log(sumArray(numbers1));
+// console.log(sumArray(numbers1));
 
 // 2. Reverse String
 const string1 = "hello";
@@ -26,7 +26,7 @@ function reverseString(str) {
   }
   return newStr;
 }
-console.log(reverseString(string1));
+// console.log(reverseString(string1));
 
 // 3. Check Palindrome
 const string2 = "racecar";
@@ -35,15 +35,15 @@ function isPalindrome(str) {
   str.toLowerCase().split(``).reverse().join(``);
   return str === str.split(``).reverse().join(``);
 }
-console.log(isPalindrome(string2));
+// console.log(isPalindrome(string2));
 
 // 4. Remove Duplicates
 const numbers2 = [1, 2, 2, 3, 4, 4, 5];
 // TODO: Write a function to remove duplicates from an array
 function removeDuplicates(arr) {
-  // your code here
+  return [...new Set(arr)];
 }
-// removeDuplicates(numbers2);
+console.log(removeDuplicates(numbers2));
 
 // 5. Find Maximum
 const numbers3 = [2, 10, 5, 8, 1, 7, 4, 3, 9, 67, 3, 8, 2, 10, 5, 6, 1, 4, 9];
@@ -51,12 +51,11 @@ const numbers3 = [2, 10, 5, 8, 1, 7, 4, 3, 9, 67, 3, 8, 2, 10, 5, 6, 1, 4, 9];
 function findMax(arr) {
   let maxNum = 0;
   for (let i = 0; i < arr.length; i++) {
-    if (Math.max(arr[i]) > maxNum) 
-      maxNum = Math.max(arr[i]);
+    if (Math.max(arr[i]) > maxNum) maxNum = Math.max(arr[i]);
   }
   return maxNum;
 }
-console.log(findMax(numbers3));
+// console.log(findMax(numbers3));
 
 // 6. Average Age
 const people = [
@@ -66,9 +65,16 @@ const people = [
 ];
 // TODO: Write a function to calculate the average age of people
 function averageAge(people) {
-  // your code here
+  let sumAges = 0;
+  let avgAge;
+  for (let i = 0; i < people.length; i++) {
+    console.log(people[i]);
+    sumAges += people[i].age;
+  }
+  avgAge = sumAges / people.length;
+  return avgAge;
 }
-// averageAge(people)
+// console.log(averageAge(people));
 
 // 7. Filter by Category
 const items = [
