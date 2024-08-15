@@ -119,9 +119,10 @@ const array1 = [1, 2, 3];
 const array2 = [4, 5, 6];
 // TODO: Write a function to merge two arrays
 function mergeArrays(arr1, arr2) {
-  // your code here
+  let NewArr = arr1.concat(arr2);
+  return NewArr;
 }
-// mergeArrays(array1,array2)
+console.log(mergeArrays(array1, array2));
 
 // 10. Product of Array
 const numbers4 = [1, 2, 3, 4, 5];
