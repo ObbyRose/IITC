@@ -90,7 +90,7 @@ function filterByCategory(items, category) {
   }
   return filtering;
 }
-console.log(filterByCategory(items, "electronics"));
+// console.log(filterByCategory(items, "electronics"));
 
 // 8. Count Vowels
 const string3 = "josephino";
@@ -122,15 +122,20 @@ function mergeArrays(arr1, arr2) {
   let NewArr = arr1.concat(arr2);
   return NewArr;
 }
-console.log(mergeArrays(array1, array2));
+// console.log(mergeArrays(array1, array2));
 
 // 10. Product of Array
 const numbers4 = [1, 2, 3, 4, 5];
 // TODO: Write a function to find the product of all numbers in an array
 function productArray(numbers) {
-  // your code here
+  let product = 1;
+  for (let i = 0; i < numbers.length; i++) {
+   product *= numbers[i]
+  }
+  return product
 }
-// productArray(numbers4)
+// console.log(productArray(numbers4));
+
 
 // Medium
 
