@@ -43,7 +43,7 @@ const numbers2 = [1, 2, 2, 3, 4, 4, 5];
 function removeDuplicates(arr) {
   return [...new Set(arr)];
 }
-console.log(removeDuplicates(numbers2));
+// console.log(removeDuplicates(numbers2));
 
 // 5. Find Maximum
 const numbers3 = [2, 10, 5, 8, 1, 7, 4, 3, 9, 67, 3, 8, 2, 10, 5, 6, 1, 4, 9];
@@ -84,9 +84,13 @@ const items = [
 ];
 // TODO: Write a function to filter items by category
 function filterByCategory(items, category) {
-  // your code here
+  let filtering;
+  for (let i = 0; i < items.length; i++) {
+    filtering = items.filter((items) => items.category === category);
+  }
+  return filtering;
 }
-// filterByCategory(items, "clothing")
+console.log(filterByCategory(items, "electronics"));
 
 // 8. Count Vowels
 const string3 = "josephino";
@@ -108,7 +112,7 @@ function countVowels(str) {
   }
   return count;
 }
-console.log(countVowels(string3));
+// console.log(countVowels(string3));
 
 // 9. Merge Arrays
 const array1 = [1, 2, 3];
