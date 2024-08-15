@@ -45,15 +45,15 @@ and ProductName <> 'Chai'
 SELECT ProductName, UnitPrice, CategoryID
 FROM Products
 WHERE UnitPrice in (SELECT UnitPrice
-                   FROM Products
-				   WHERE CategoryID = 5)
+                    FROM Products
+				    WHERE CategoryID = 5)
 
 --Q8
 SELECT ProductName, UnitPrice
 FROM Products
 WHERE UnitPrice > any (SELECT UnitPrice
-                   FROM Products
-				   WHERE CategoryID = 5)
+                       FROM Products
+				       WHERE CategoryID = 5)
 
 --Q9
 SELECT  productName , UnitPrice
@@ -84,8 +84,8 @@ WHERE CategoryID IN (SELECT CategoryID
 			         FROM categories 
 			         WHERE CategoryName IN ('Beverages','Condiments'))
 AND SupplierID IN (	SELECT SupplierID
-			FROM suppliers 
-			WHERE region IS NULL)
+			        FROM suppliers 
+			        WHERE region IS NULL)
 
 --Q13
 SELECT CompanyName
