@@ -3,26 +3,32 @@ CREATE PROCEDURE getAllItems
 AS
 select *
 from Items;
+order by Code
 GO
 
 CREATE PROCEDURE OrdersToBeDone
 AS
-select Status , SuppDate, OrderNo
-from ExOrders
-GO
-select ExOrders.OrderNo, sum (ExOrders.Quantity * items.UnitPrice) as TotalAmount
-from ExOrders join Items
-on ExOrders.Code = Items.Code
-group by ExOrders.OrderNo
+select E.OrderDate, SUM(I.UnitPrice * E.Quantity) AS OrderAmount,
+I.[Desc] AS ItemDescription,
+E.Quantity,
+E.Status
+FROM ExOrders E
+JOIN Items I ON E.Code = I.Code
+GROUP BY E.OrderDate, E.OrderNo, I.[Desc], E.Quantity, E.Status
+ORDER BY E.OrderDate;
 GO
 
 CREATE PROCEDURE ReturningCustomer
 AS
-select C.CustID, C.CustName, C.CustStatus, E.Status, E.Quantity,  i.Freq
-from Customers as C join ExOrders as E
-on c.CustID= e.CustID 
-join Items as I
-on e.Code = i.Code
+SELECT
+C.CustID, C.CustName, C.CustStatus, 
+S.OrderNo,S.Status,
+I.[Desc], O.Quantity, s.freq 
+FROM Subscription S
+INNER JOIN Customers C ON S.CustID = C.CustID
+INNER JOIN ExOrders O ON S.OrderNo = O.OrderNo
+INNER JOIN Items I ON O.Code = I.Code
+ORDER BY C.CustID, S.OrderNo, I.[Desc];
 GO
 
 CREATE PROCEDURE FinancialSituation
@@ -43,5 +49,3 @@ on e.OrderNo = i.OrderNo
 where status = 'Pending'
 order by e.OrderDate
 GO
-
-exec PendingOrders

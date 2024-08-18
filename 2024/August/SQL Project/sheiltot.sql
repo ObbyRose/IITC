@@ -1,32 +1,38 @@
 --Q1
 select *
 from Items
+order by Code
 
 --Q2
-select Status , SuppDate, OrderNo
-from ExOrders
+SELECT
+E.OrderDate, SUM(I.UnitPrice * E.Quantity) AS OrderAmount,
+I.[Desc] AS ItemDescription,
+E.Quantity,
+E.Status
+FROM ExOrders E
+JOIN Items I ON E.Code = I.Code
+GROUP BY E.OrderDate, E.OrderNo, I.[Desc], E.Quantity, E.Status
+ORDER BY E.OrderDate;
 
 --Q3
-select ExOrders.OrderNo, sum (ExOrders.Quantity * items.UnitPrice) as TotalAmount
-from ExOrders join Items
-on ExOrders.Code = Items.Code
-group by ExOrders.OrderNo
+SELECT
+C.CustID, C.CustName, C.CustStatus, 
+S.OrderNo,S.Status,
+I.[Desc], O.Quantity, s.freq 
+FROM Subscription S
+INNER JOIN Customers C ON S.CustID = C.CustID
+INNER JOIN ExOrders O ON S.OrderNo = O.OrderNo
+INNER JOIN Items I ON O.Code = I.Code
+ORDER BY C.CustID, S.OrderNo, I.[Desc];
 
 --Q4
-select C.CustID, C.CustName, C.CustStatus, E.Status, E.Quantity,  i.Freq
-from Customers as C join ExOrders as E
-on c.CustID= e.CustID 
-join Items as I
-on e.Code = i.Code
-
---Q5
 select R.RecNo, R.OrderNo, R.PymtDate,R.PaidAmt,
 sum(A.CrdtDebt - R.PaidAmt) as SumOfDebtAndPaid
 from Receipts as R join Accounting as A
 on R.InvNo = A.InvNo
 group by R.OrderNo, r.RecNo, R.PymtDate,R.PaidAmt
 
---Q6
+--Q5
 select e.OrderDate, e.SuppDate, i.TotalAmount
 from ExOrders as e join Invoices as i
 on e.OrderNo = i.OrderNo
