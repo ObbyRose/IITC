@@ -130,12 +130,11 @@ const numbers4 = [1, 2, 3, 4, 5];
 function productArray(numbers) {
   let product = 1;
   for (let i = 0; i < numbers.length; i++) {
-   product *= numbers[i]
+    product *= numbers[i];
   }
-  return product
+  return product;
 }
 // console.log(productArray(numbers4));
-
 
 // Medium
 
@@ -143,9 +142,18 @@ function productArray(numbers) {
 const string4 = "The quick brown fox jumps over the lazy dog";
 // TODO: Write a function to find the longest word in a string
 function longestWord(str) {
-  // your code here
+  let max = -1;
+  let maxIndex = -1;
+  const arr = str.split(` `);
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].length > max) {
+      max = arr[i].length;
+      maxIndex = i;
+    }
+  }
+  return arr[maxIndex];
 }
-// longestWord(string4)
+console.log(longestWord(string4));
 
 // 12. Count Words
 const string5 = "The quick brown fox jumps over the lazy dog";

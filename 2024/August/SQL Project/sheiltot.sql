@@ -32,6 +32,7 @@ from Receipts as R join Accounting as A
 on R.InvNo = A.InvNo
 group by R.OrderNo, r.RecNo, R.PymtDate,R.PaidAmt
 
+
 --Q5
 select e.OrderDate, e.SuppDate, i.TotalAmount
 from ExOrders as e join Invoices as i
