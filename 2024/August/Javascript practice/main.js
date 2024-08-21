@@ -159,9 +159,14 @@ console.log(longestWord(string4));
 const string5 = "The quick brown fox jumps over the lazy dog";
 // TODO: Write a function to count the number of words in a string
 function countWords(str) {
-  // your code here
+  let count = 0;
+  const arr = str.split(` `);
+  for (let i = 0; i < arr.length; i++) {
+    count++;
+  }
+  return count;
 }
-// countWords(string5)
+console.log(countWords(string5));
 
 // 13. Sort Array
 const numbers5 = [5, 3, 8, 1, 2];
