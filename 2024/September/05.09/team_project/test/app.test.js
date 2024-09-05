@@ -19,6 +19,8 @@ describe("GET /products/1", () => {
   });
 });
 
+
+
 describe("GET /products/1448", () => {
   it("should response with code 404", async () => {
     const response = await request(app).get(`/products/1448`);

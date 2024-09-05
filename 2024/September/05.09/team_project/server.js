@@ -45,7 +45,7 @@ app.post("/api/products", async (req, res) => {
       category: req.body.category,
       image: req.body.image,
     }; // Make a POST request to an external API using Axios
-
+    // if(!productData.body){return res.status(400).send(`product does not exist`)}
     const externalApiUrl = `${baseURL}/products`; // Corrected the URL
     const response = await axios.post(externalApiUrl, productData); // Send success response to the client
 
