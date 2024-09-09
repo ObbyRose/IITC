@@ -132,25 +132,30 @@
     
     .buttons{
         margin: 0;
+        padding-top: 1rem;
     }
     
     .explore__btn{
         font-size: 1rem;
-        border: solid 0.2rem;
+        font-weight: bold;
+        border: solid 0.4rem;
         border-color: blueviolet;
         background-color: blueviolet;
         color: white;
+        text-transform: uppercase;
     text-decoration: none;
     letter-spacing: 0.1rem;
     border-radius: 0.1rem;
 }
 .join__btn{
     font-size: 1rem;
-    border: solid 0.2rem;
+    font-weight: bold;
+    border: solid 0.4rem;
     border-radius: 1rem;
     border-color: blueviolet;
     background-color: blueviolet;
     letter-spacing: 0.1rem;
     color: white;
     text-decoration: none;
+    text-transform: uppercase;
 }
