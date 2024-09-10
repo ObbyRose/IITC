@@ -21,7 +21,7 @@ body {
  border: 2px solid rgb(18, 69, 89);
  background-color: rgb(18, 69, 89);
  color: rgb(239, 246, 224);
- height: 100%;
+ height:100vh;
  width: 20%;
 }
 
