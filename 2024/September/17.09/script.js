@@ -11,6 +11,7 @@ const greeting = document.getElementById(`greeting`);
 const clearButton = document.getElementById(`clear`);
 const box = document.getElementById(`box`);
 const changeStyle = document.getElementById(`changeStyle`);
+const clickMe = document.querySelectorAll(`.clickMe`)
 
 content.style.backgroundColor = `lightblue`;
 for (const atext of text) {
@@ -105,3 +106,15 @@ changeStylePress = () => {
 };
 
 changeStyle.addEventListener(`click`, changeStylePress);
+
+
+pressAlert = () => {
+    for ( let i = 0; i < clickMe.length; i++) {
+        clickMe[i].addEventListener (`click`, () => {
+            alert (i+1)
+        })
+    }
+
+}
+addEventListener(`click` ,pressAlert)
+
