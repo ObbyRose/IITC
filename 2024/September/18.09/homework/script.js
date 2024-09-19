@@ -16,6 +16,7 @@ function displayList() {
   _toDoList.innerHTML = "";
 
   for (const task of tasks) {
+
     _toDoList.innerHTML += `<li data-task-id=${task.id}>
                 <div class="check-and-text">
                     <input type="checkbox" ${task.isChecked ? `checked` : ``}/>
@@ -28,6 +29,7 @@ function displayList() {
                     <icon class="fas fa-trash-alt"></icon>
                 </div>
             </li>`;
+
 
     /*
         const li = document.createElement("li");
@@ -102,4 +104,31 @@ function handleCheckTask(e) {
     localStorage.setItem(`list`, JSON.stringify(tasks));
     displayList();
   }
+}
+
+document.getElementById('filter').addEventListener('change', filterTasks);
+
+function filterTasks() {
+  const filterValue = document.getElementById('filter').value;
+  const tasks = document.querySelectorAll('li');
+  
+  tasks.forEach(task => {
+    const isChecked = task.querySelector('input[type="checkbox"]').checked;
+    
+    if (filterValue === 'completed') {
+      if (isChecked) {
+        task.style.display = 'flex'; 
+      } else {
+        task.style.display = 'none'; 
+      }
+    } else if (filterValue === 'not-completed') {
+      if (!isChecked) {
+        task.style.display = 'flex'; 
+      } else {
+        task.style.display = 'none';
+      }
+    } else {
+      task.style.display = 'flex'; 
+    }
+  });
 }
