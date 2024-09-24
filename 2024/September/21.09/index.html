@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .grid {
+      background-color: darkred;
+      display: grid;
+      gap: 8px;
+      background-color: rgb(42, 42, 42);
+
+      grid-template-columns: 1fr 1fr 1fr;
+      /* width: 180px; */
+      /* justify-items: center; */
+      /* align-items: center; */
+      /* align-content: center; */
+      /* justify-content: center; */
+
+      /* grid-auto-flow: column; */
+    }
+    
+    .grid-item{
+        background-color: blueviolet;
+    }
+
+    .grid-item-1 {
+      /* grid-column-start: 1; */
+      /* grid-column-end: -1; */
+      grid-column: 1 / -1;
+      background-color: red;
+    }
+
+    .grid-item-2 {
+      /* grid-column-start: 2;
+      grid-column-end: 4; */
+      grid-column: 2 / 4;
+      background-color: blue;
+    }
+
+    .grid-item-3 {
+        background-color: green;
+        /* grid-column-start: span 3 ; */
+        grid-column: 2 / span 2;
+    }
+
+    .grid-item-4 {
+        background-color: yellow;
+        grid-row: 2/6;
+
+    }
+
+    @media (min-width: 300px) {
+        .grid{
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+    }
+  </style>
+  <body>
+    <div class="grid">
+      <div class="grid-item-1">1</div>
+      <div class="grid-item-2">2</div>
+      <div class="grid-item-3">3</div>
+      <div class="grid-item-4">4</div>
+      <div class="grid-item">5</div>
+      <div class="grid-item">6</div>
+      <div class="grid-item">7</div>
+      <div class="grid-item">8</div>
+      <div class="grid-item">9</div>
+      <div class="grid-item">10</div>
+    </div>
+  </body>
+</html>
