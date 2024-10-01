@@ -188,7 +188,118 @@
     const q30Resource = [1,2,3,-4,5,-6]
     const find3 = q30Resource.find((num) => num < 0)
     console.log(find3);
+
+    //Q31
+    const q31Resource = [3, 1, 4, 1, 5, 9, 2, 6, 5]
+    const sort1 = q31Resource.sort((a , b) => a-b)
+    console.log(sort1);
     
+    //Q32
+    const q32Resource = [3, 1, 4, 1, 5, 9, 2, 6, 5]
+    const sort2 = q32Resource.sort((a,b) => b - a)
+    console.log(sort2);
+    
+    //Q33
+    const q33Resource = ["apple", "banana","date", "cherry"]
+    const sort3 = q33Resource.sort ((a,b) => a.localeCompare(b))
+    console.log(sort3);
+    
+    //Q34
+    const sort4 = q33Resource.sort ((a,b) => a.length - b.length)
+    console.log(sort4);
+
+    //Q35
+    const q35Resource = [{name: 'Johnathan', age: 25}, {name: 'Yael', age: 30}, {name: 'Boaz', age: 20}]
+    const sort5 = q35Resource.sort((a,b) => a.age-b.age)
+    console.log(sort5);
+    
+    //Q36
+    const q36Resource =  [1, [2, 3], [4, [5, 6]]]
+    const flat1 = q36Resource.flat(Infinity)
+    console.log(flat1);
+    
+    //Q37
+    const q37Resource =  [1, [2, [3, [4]]]]
+    const flat2 = q37Resource.flat(2)
+    console.log(flat2);
+    
+    //Q38
+    const q38Resource = [1, 2, , 4, 5]
+    const flat3 = q38Resource.flat((Infinity))
+    console.log(flat3);
+    
+    //Q39
+    const q39Resource = ['a',['b','c'],'d']
+    const flat4 = q39Resource.flat()
+    console.log(flat4);
+    
+    //Q40
+    const q40Resource = [1, [2, [3, [4, [5]]]]]
+    const flat5 = q40Resource.flat((Infinity))
+    console.log(flat5);
+
+    //Q41
+    const q41Resource = ['a','b','c','d']
+    q41Resource.forEach((str) => console.log(str));
+    
+    //Q42
+    const numbers = [10, 20, 30, 40];
+
+    const result = numbers.map((value, index) => ({
+        index: index,
+        value: value
+    }));
+    console.log(result);
+
+    //Q43
+        const words = ['תפוח', 'בננה', 'אבטיח', 'תמר'];
+    const outcome = words.filter(word => word.includes('א'));
+    console.log(outcome); 
+
+    //Q44
+        const letters = ['א', 'ב', 'א', 'ג', 'ב', 'א'];
+    const countOccurrences = letters.reduce((acc, letter) => {
+        acc[letter] = (acc[letter] || 0) + 1;
+        return acc;
+    }, {});
+    console.log(countOccurrences);
+
+    //Q45
+        const strings = ['שלום', 'עולם', 'ג\'אווהסקריפט'];
+    const containsZ = strings.some(str => str.includes('ז'));
+    console.log(containsZ); 
+
+    //Q46
+        const num = [2, 4, 6, 8];
+    const allDivisibleBy2 = num.every(num => num % 2 === 0);
+    console.log(allDivisibleBy2);
+
+    //Q47
+    const statuses = [{id: 1, status: 'לא פעיל'}, {id: 2, status: 'פעיל'}];
+    const activeStatus = statuses.find(item => item.status === 'פעיל');
+    console.log(activeStatus);
+
+    //Q48
+    const num48 = [3, 7, -2, 9, -5];
+    const negativeIndex = num48.findIndex(num => num < 0);
+    console.log(negativeIndex); 
+
+    //Q49
+    const languages = ['JavaScript', 'Python', 'Ruby', 'Java'];
+    const sortedByLength = languages.sort((a, b) => b.length - a.length);
+    console.log(sortedByLength);
+
+    //Q50
+    const nestedArray = [1, [2, [3]], [4, [5]]];
+    const flattened = nestedArray.flat(1);
+    console.log(flattened); // [1, 2, [3], 4, [5]]
+
+
+
+
+
+
+
 
 
 
