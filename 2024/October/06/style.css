@@ -1,0 +1,87 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.atm-container {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    max-width: 350px;
+    text-align: center;
+}
+
+h2 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.atm-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Input Styles */
+.atm-input {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 1.2rem;
+    margin: 10px 0;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* Button Styles */
+.atm-btn {
+    background-color: #187800;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+    margin: 10px 0;
+    transition: background-color 0.3s ease;
+}
+
+.atm-btn:hover {
+    background-color: #002902;
+}
+
+.atm-btn-cancel {
+    background-color: #e74c3c;
+}
+
+.atm-btn-cancel:hover {
+    background-color: #c0392b;
+}
+
+/* Error Message */
+.atm-error-msg {
+    color: #e74c3c;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+/* Balance Display */
+.atm-balance {
+    font-size: 1.5rem;
+    color: #187800;
+    margin: 20px 0;
+}
