@@ -18,7 +18,7 @@ function enterPin() {
         attempts++;
         document.getElementById('errorMsg').textContent = "Incorrect PIN!";
         if (attempts >= 3) {
-            document.getElementById('errorMsg').textContent = "Call your bank.";
+            document.getElementById('errorMsg').textContent = "Your card had been declined please contact your bank to retrieve it.";
         }
     }
 }

@@ -1,4 +1,4 @@
-/* General Styles */
+
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #f7f7f7;
@@ -48,7 +48,6 @@ h2 {
     outline: none;
 }
 
-/* Button Styling */
 .atm-btn {
     width: 100%;
     padding: 15px;
@@ -105,6 +104,10 @@ h2 {
     display: none;
 }
 
+.overFlow {
+    max-height: 25rem;
+    overflow: auto;
+}
 
 .atm-table {
     width: 100%;
