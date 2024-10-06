@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="atm-container">
+
         <div id="pinPage" class="atm-screen">
             <h2>Enter PIN</h2>
             <input type="password" id="pinInput" maxlength="4" class="atm-input">
@@ -17,10 +18,11 @@
         </div>
 
         <div id="mainMenu" class="atm-screen hidden">
-            <h2>ATM Menu</h2>
+            <h2>Main Menu</h2>
             <button class="atm-btn" onclick="showBalance()">Check Balance</button>
             <button class="atm-btn" onclick="showDeposit()">Deposit Money</button>
             <button class="atm-btn" onclick="showWithdraw()">Withdraw Money</button>
+            <button class="atm-btn" onclick="showTransactions()">View Transactions</button>
             <br>
             <button class="atm-btn atm-btn-cancel" onclick="logout()">Log Out</button>
         </div>
@@ -36,10 +38,10 @@
             <input type="number" id="depositAmount" class="atm-input" placeholder="Amount to Deposit">
             <br>
             <button class="atm-btn" onclick="deposit()">Deposit</button>
-            <button class="atm-btn atm-btn-cancel" onclick="goBack()">Cancel</button>
+            <button class="atm-btn atm-btn-cancel" onclick="goBack()">Log Out</button>
         </div>
 
-        <!-- Withdraw Page (Initially Hidden) -->
+
         <div id="withdrawPage" class="atm-screen hidden">
             <h2>Withdraw Money</h2>
             <input type="number" id="withdrawAmount" class="atm-input" placeholder="Amount to Withdraw">
@@ -48,8 +50,25 @@
             <p id="withdrawError" class="atm-error-msg"></p>
             <button class="atm-btn atm-btn-cancel" onclick="goBack()">Cancel</button>
         </div>
+
+
+        <div id="transactionsPage" class="atm-screen hidden">
+            <h2>Recent Transactions</h2>
+            <table id="transactionsTable" class="atm-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Type</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody id="transactionsBody">
+                </tbody>
+            </table>
+            <button class="atm-btn" onclick="goBack()">Back</button>
+        </div>
     </div>
 
-    <script src="atm.js"></script>
+    <script src="./atm.js"></script>
 </body>
 </html>
