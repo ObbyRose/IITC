@@ -243,9 +243,9 @@
     q41Resource.forEach((str) => console.log(str));
     
     //Q42
-    const numbers = [10, 20, 30, 40];
+    const Q42Resource = [10, 20, 30, 40];
 
-    const result = numbers.map((value, index) => ({
+    const result = Q42Resource.map((value, index) => ({
         index: index,
         value: value
     }));
@@ -257,43 +257,197 @@
     console.log(outcome); 
 
     //Q44
-        const letters = ['א', 'ב', 'א', 'ג', 'ב', 'א'];
-    const countOccurrences = letters.reduce((acc, letter) => {
+        const q44Resource = ['א', 'ב', 'א', 'ג', 'ב', 'א'];
+    const countOccurrences = q44Resource.reduce((acc, letter) => {
         acc[letter] = (acc[letter] || 0) + 1;
         return acc;
     }, {});
     console.log(countOccurrences);
 
     //Q45
-        const strings = ['שלום', 'עולם', 'ג\'אווהסקריפט'];
-    const containsZ = strings.some(str => str.includes('ז'));
+        const q45Resource = ['שלום', 'עולם', 'ג\'אווהסקריפט'];
+    const containsZ = q45Resource.some(str => str.includes('ז'));
     console.log(containsZ); 
 
     //Q46
-        const num = [2, 4, 6, 8];
-    const allDivisibleBy2 = num.every(num => num % 2 === 0);
+        const q46Resource = [2, 4, 6, 8];
+    const allDivisibleBy2 = q46Resource.every(num => num % 2 === 0);
     console.log(allDivisibleBy2);
 
     //Q47
-    const statuses = [{id: 1, status: 'לא פעיל'}, {id: 2, status: 'פעיל'}];
-    const activeStatus = statuses.find(item => item.status === 'פעיל');
+    const q47Resource = [{id: 1, status: 'לא פעיל'}, {id: 2, status: 'פעיל'}];
+    const activeStatus = q47Resource.find(item => item.status === 'פעיל');
     console.log(activeStatus);
 
     //Q48
-    const num48 = [3, 7, -2, 9, -5];
-    const negativeIndex = num48.findIndex(num => num < 0);
+    const q48Resource = [3, 7, -2, 9, -5];
+    const negativeIndex = q48Resource.findIndex(num => num < 0);
     console.log(negativeIndex); 
 
     //Q49
-    const languages = ['JavaScript', 'Python', 'Ruby', 'Java'];
-    const sortedByLength = languages.sort((a, b) => b.length - a.length);
-    console.log(sortedByLength);
+    const q49Resource = ['JavaScript', 'Python', 'Ruby', 'Java'];
+    const sortLength = q49Resource.sort((a, b) => b.length - a.length);
+    console.log(sortLength);
 
     //Q50
-    const nestedArray = [1, [2, [3]], [4, [5]]];
-    const flattened = nestedArray.flat(1);
+    const q50Resource = [1, [2, [3]], [4, [5]]];
+    const flattened = q50Resource.flat(1);
     console.log(flattened); // [1, 2, [3], 4, [5]]
 
+    //Q51
+    const q51Resource = ['ש', 'ל', 'ו', 'ם'];
+    let word = '';
+    q51Resource.forEach(char => word += char);
+    console.log(word);
+
+    //Q52
+    const numbers = [1, 2, 3, 4, 5];
+    const incrementedNumbers = numbers.map(num => num + 10);
+    console.log(incrementedNumbers);
+
+    //Q53
+    const numArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const divisibleBy3 = numArray.filter(num => num % 3 === 0);
+    console.log(divisibleBy3);
+
+    //Q54
+    const strings = ['קצר', 'בינוני', 'הכי ארוך', 'ארוך יותר'];
+    const longestString = strings.reduce((longest, current) => current.length > longest.length ? current : longest, '');
+    console.log(longestString);
+
+    // Q55
+    const oddNumbers = [1, 3, 5, 7, 9];
+    const hasEvenNumber = oddNumbers.some(num => num % 2 === 0);
+    console.log(hasEvenNumber);
+
+    //Q56
+    const q56Resource = ['תפוח', 'תפ', 'תפוז'];
+    const allStartWithTap = q56Resource.every(fruit => fruit.startsWith('תפ'));
+    console.log(allStartWithTap);
+
+    //Q57
+    const tasks = [{id: 1, completed: false}, {id: 2, completed: true}];
+    const firstCompleted = tasks.find(task => task.completed);
+    console.log(firstCompleted);
+
+    //Q58
+    const fruitArray = ['תפוח', 'בננה', 'דובדבן'];
+    const bananaIndex = fruitArray.findIndex(fruit => fruit === 'בננה');
+    console.log(bananaIndex);
+
+    //Q59
+    const people = [{name: 'יוחנן', age: 25}, {name: 'יעל', age: 30}, {name: 'בועז', age: 20}];
+    const sortedPeople = people.sort((a, b) => a.name.localeCompare(b.name));
+    console.log(sortedPeople);
+
+    //Q60
+    const nestedArray = [1, [2, 3], [4, [5, 6]]];
+    const flattenedArray = nestedArray.flat(2);
+    console.log(flattenedArray);
+
+    //Q61
+    const greeting = 'שלום';
+    greeting.split('').forEach(char => console.log(char));
+
+    //Q62
+    const wordsArray = ['תפוח', 'בננה', 'דובדבן'];
+    const firstLetters = wordsArray.map(word => word[0]);
+    console.log(firstLetters);
+
+    //Q63
+    const shortStrings = ['א', 'אב', 'אבג', 'אבגד'];
+    const longerStrings = shortStrings.filter(str => str.length > 3);
+    console.log(longerStrings);
+
+    //Q64
+    const fruits2 = ['תפוח', 'בננה', 'דובדבן'];
+    const totalCharacters = fruits2.reduce((total, word) => total + word.length, 0);
+    console.log(totalCharacters);
+
+    //Q65
+    const longStringsArray = ['שלום', 'עולם', 'ג\'אווהסקריפט'];
+    const hasLongString = longStringsArray.some(str => str.length > 10);
+    console.log(hasLongString);
+
+    //Q66
+    const numbersArray = [10, 20, 30, 40, 50];
+    const allGreaterThan5 = numbersArray.every(num => num > 5);
+    console.log(allGreaterThan5);
+
+    //Q67
+    const objects = ['ספר', 'דלת', 'חלון'];
+    const firstWithWW = objects.find(str => str.includes('וו'));
+    console.log(firstWithWW);
+
+    //Q68
+    const mixedNumbers = [5, 10, 15, 20];
+    const firstGreaterThan10 = mixedNumbers.findIndex(num => num > 10);
+    console.log(firstGreaterThan10);
+
+    //Q69
+    const stringArray = ['אאא', 'בב', 'ג'];
+    const sortedByLength = stringArray.sort((a, b) => a.length - b.length);
+    console.log(sortedByLength);
+
+    //Q70
+    const deepArray = [1, [2, [3, [4]]]];
+    const flattenedDeepArray = deepArray.flat(3);
+    console.log(flattenedDeepArray);
+
+    //Q71
+    const squares = [1, 4, 9, 16];
+    const squareRoots = [];
+    squares.forEach(num => squareRoots.push(Math.sqrt(num)));
+    console.log(squareRoots);
+
+    //Q72
+    const hebrewLetters = ['א', 'ב', 'ג'];
+    const duplicated = hebrewLetters.map(letter => letter.repeat(2));
+    console.log(duplicated);
+
+    //Q73
+    const numRange = [5, 10, 15, 20, 25];
+    const between10And20 = numRange.filter(num => num >= 10 && num <= 20);
+    console.log(between10And20);
+
+    //Q74
+    const objectArray = [{א: 1}, {ב: 2}, {ג: 3}];
+    const mergedObject = objectArray.reduce((acc, obj) => ({...acc, ...obj}), {});
+    console.log(mergedObject);
+
+    //Q75
+    const xyzArray = [{x: 1}, {y: 2}, {z: 3}];
+    const hasYProperty = xyzArray.some(obj => obj.hasOwnProperty('y'));
+    console.log(hasYProperty);
+
+    //Q76
+    const mixedStrings = ['א1', 'ב2', 'ג3'];
+    const allContainLetterAndNumber = mixedStrings.every(str => /\D/.test(str) && /\d/.test(str));
+    console.log(allContainLetterAndNumber);
+
+    //Q77
+    const prices = [{מחיר: 60}, {מחיר: 40}, {מחיר: 70}];
+    const firstUnder50 = prices.find(product => product.מחיר < 50);
+    console.log(firstUnder50);
+
+    //Q78
+    const truthyFalsyArray = [1, '', true, 0, null, 'שלום'];
+    const firstFalsyIndex = truthyFalsyArray.findIndex(value => !value);
+    console.log(firstFalsyIndex);
+
+    //Q79
+    const numberDecimals = [3.14, 2.71, 1.41, 1.73];
+    const sortedNumbers = numberDecimals.sort((a, b) => a - b);
+    console.log(sortedNumbers);
+
+    //Q80
+    const infiniteArray = ['א', ['ב', ['ג']]];
+    const flattenedInfinite = infiniteArray.flat(Infinity);
+    console.log(flattenedInfinite);
+
+    
+    
+    
 
 
 
