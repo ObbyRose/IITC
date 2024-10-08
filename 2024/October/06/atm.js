@@ -8,7 +8,7 @@ function showScreen(screenId) {
     screens.forEach(screen => screen.classList.add('hidden'));
     document.getElementById(screenId).classList.remove('hidden');
 }
-
+//
 function enterPin() {
     const enteredPin = document.getElementById('pinInput').value;
     if (enteredPin === pin) {
