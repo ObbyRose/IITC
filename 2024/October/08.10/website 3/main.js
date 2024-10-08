@@ -4,8 +4,9 @@ document.getElementById('dogButton').addEventListener('click', function() {
         .then(data => {
             const dogFact = document.getElementById('dogFact');
             
-            dogFact.src = data.message;
+            dogFact.src = data.facts;
             dogFact.style.display = 'block';
+            dogFact.style.textSize = '12px';
         })
         .catch(error => {
             console.error('Error fetching the dog fact:', error);
