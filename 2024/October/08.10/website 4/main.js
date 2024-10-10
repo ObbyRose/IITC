@@ -3,6 +3,8 @@ document.getElementById('cringeBtn').addEventListener('click', function() {
         .then(response => response.json())
         .then(data => {
             const cringeImage = document.getElementById('cringe');
+            console.log(data);
+            
             
             cringeImage.src = data.url;
             cringeImage.style.display = 'block';
