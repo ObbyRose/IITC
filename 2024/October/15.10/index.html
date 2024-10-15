@@ -1,0 +1,50 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Post Management</title>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script defer src="main.js"></script>
+    </head>
+    <body>
+        <h1>Posts</h1>
+
+        <ul id="posts-list"></ul>
+
+        <h2>Single Post</h2>
+        <div id="post-details">
+        <h3 id="post-title"></h3>
+        <p id="post-content"></p>
+        </div>
+
+        <h2>Create Post</h2>
+        <form id="create-post-form">
+        <input type="text" id="title" placeholder="Title" required />
+        <input type="text" id="content" placeholder="Content" required />
+        <button type="submit">Create Post</button>
+        </form>
+
+        <h2>Update Post</h2>
+        <form id="update-post-form">
+        <input type="number" id="post-id" placeholder="Post ID" required />
+        <input type="text" id="update-title" placeholder="Title" required />
+        <input type="text" id="update-content" placeholder="Content" required />
+        <button type="submit">Update Post</button>
+        </form>
+
+        <h2>Delete Post</h2>
+        <input type="number" id="delete-post-id" placeholder="Post ID" required />
+        <button id="delete-post-button">Delete Post</button>
+
+        <h2>Search Posts</h2>
+        <input type="text" id="search-input" placeholder="Search by title" />
+        <button id="sort-posts">Sort Posts Alphabetically</button>
+
+        <button id="show-more">Show More</button>
+
+        <div id="loading" style="display: none">Loading...</div>
+        <div id="error-message" style="color: red"></div>
+        <div id="success-message" style="color: green"></div>
+    </body>
+    </html>
