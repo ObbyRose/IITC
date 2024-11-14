@@ -1,9 +1,9 @@
 import React from "react";
 
 //component import
-import Ingredients from "./Ingredients.jsx";
-import Instructions from "./Instructions.jsx";
-import Nutrition from "./Nutrition.jsx";
+import Ingredients from "../IngredientsInstructionsNutrition/Ingredients.jsx";
+import Instructions from "../IngredientsInstructionsNutrition/Instructions.jsx";
+import Nutrition from "../IngredientsInstructionsNutrition/Nutrition.jsx"
 
 const Recipe = () => {
     return (

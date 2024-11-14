@@ -1,9 +1,9 @@
 import React from "react";
-import './Head.css'
+import '../Head/Head.css'
 
 //component import
-import Intro from "./Intro.jsx";
-import PrepTime from "./PrepTime.jsx";
+import PrepTime from "../IntroPrep/PrepTime.jsx";
+import Intro from "../IntroPrep/Intro.jsx"
 
 const Head = () => {
     return (
