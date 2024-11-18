@@ -2,14 +2,13 @@
     import './App.css'
 
     //components Import
-    // import Button from '../../components/Button.jsx'
-    // import Modal from '../../components/Modal.jsx'
-    // import Layout from '../../components/Layout.jsx'
-    // import List from '../../components/List.jsx'
-    // import Box from '../../components/Box.jsx'
-    // import Card from '../../components/Card.jsx'
-    // import Accordion from '../../components/Accordion.jsx'
-    import PokeBall from '../../components/PokeBall.jsx'
+    import Button from '../../components/Button.jsx'
+    import Modal from '../../components/Modal.jsx'
+    import Layout from '../../components/Layout.jsx'
+    import List from '../../components/List.jsx'
+    import Box from '../../components/Box.jsx'
+    import Card from '../../components/Card.jsx'
+    import Accordion from '../../components/Accordion.jsx'
 
     const users =[
     {id:1, name: "John Doe", email: "John.doe@gmail.com"},
@@ -23,7 +22,7 @@
 
     return (
         <div>
-            {/* <h2>Custom Button with Icon</h2>
+            <h2>Custom Button with Icon</h2>
             <Button icon={<span>🔥</span>} onClick={() => setCount((prev) => prev + 1)}>
                 Click Me
             </Button>
@@ -62,8 +61,7 @@
                 <p>This is another styled box with a different background color.</p>
             </Box>
 
-            <hr/> */}
-            <PokeBall/>
+            <hr/>
         </div>
     );
     }
