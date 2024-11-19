@@ -86,11 +86,11 @@ body {
 }
 
 .card.ground {
-    border: 4px solid #e0c068; /* Ground type */
+    border: 4px solid #e0c068;
 }
 
 .card.poison {
-    border: 4px solid #a040a0; /* Poison type */
+    border: 4px solid #a040a0;
 }
 
 .header h1 {

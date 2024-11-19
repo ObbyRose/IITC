@@ -26,12 +26,8 @@ const Pokemon = ({ name, url }) => {
 
     const { sprites, types, stats, abilities, height, weight, base_experience } = details;
 
-    // Log the sprites object to inspect its structure
-    console.log(sprites);
+    const primaryType = types[0].type.name;
 
-    const primaryType = types[0].type.name; // Use the first type for the border color
-
-    // Strictly use the animated sprite if available
     const gifUrl =
         sprites?.versions?.["generation-v"]?.animated?.front_default || sprites?.front_default;
 
