@@ -25,68 +25,74 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Border colors based on the Pokémon type */
 .card.fire {
-    border: 4px solid #f08030; /* Fire type */
+    border: 4px solid #f08030;
 }
 
 .card.water {
-    border: 4px solid #6890f0; /* Water type */
+    border: 4px solid #6890f0;
 }
 
 .card.grass {
-    border: 4px solid #78c850; /* Grass type */
+    border: 4px solid #78c850;
 }
 
 .card.electric {
-    border: 4px solid #f8d030; /* Electric type */
+    border: 4px solid #f8d030;
 }
 
 .card.normal {
-    border: 4px solid #a8a878; /* Normal type */
+    border: 4px solid #a8a878;
 }
 
 .card.ghost {
-    border: 4px solid #705898; /* Ghost type */
+    border: 4px solid #705898;
 }
 
 .card.bug {
-    border: 4px solid #a8b820; /* Bug type */
+    border: 4px solid #a8b820;
 }
 
 .card.fighting {
-    border: 4px solid #c03028; /* Fighting type */
+    border: 4px solid #c03028;
 }
 
 .card.psychic {
-    border: 4px solid #f85888; /* Psychic type */
+    border: 4px solid #f85888;
 }
 
 .card.ice {
-    border: 4px solid #98d8d8; /* Ice type */
+    border: 4px solid #98d8d8;
 }
 
 .card.dragon {
-    border: 4px solid #7038f8; /* Dragon type */
+    border: 4px solid #7038f8;
 }
 
 .card.rock {
-    border: 4px solid #b8a038; /* Rock type */
+    border: 4px solid #b8a038;
 }
 
 .card.dark {
-    border: 4px solid #705848; /* Dark type */
+    border: 4px solid #705848;
 }
 
 .card.steel {
-    border: 4px solid #b8b8d0; /* Steel type */
+    border: 4px solid #b8b8d0;
 }
 
 .card.fairy {
-    border: 4px solid #ee99ac; /* Fairy type */
+    border: 4px solid #ee99ac;
 }
 
-/* Additional CSS for other elements */
+.card.ground {
+    border: 4px solid #e0c068; /* Ground type */
+}
+
+.card.poison {
+    border: 4px solid #a040a0; /* Poison type */
+}
+
 .header h1 {
     font-size: 24px;
     text-align: center;
