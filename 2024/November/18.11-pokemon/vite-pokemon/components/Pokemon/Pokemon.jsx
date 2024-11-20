@@ -26,28 +26,29 @@ const Pokemon = ({ name, url }) => {
 
     const { sprites, types, stats, abilities, height, weight, base_experience } = details;
 
-    const primaryType = types[0].type.name;
+    const primaryType = types?.[0]?.type?.name || "unknown";
 
     const gifUrl =
-        sprites?.versions?.["generation-v"]?.animated?.front_default || sprites?.front_default;
+        sprites?.versions?.["generation-v"]?.["black-white"]?.animated?.front_default ||
+        sprites?.front_default;
 
     return (
         <div className={`${styles.card} ${styles[primaryType]}`}>
             <div className={styles.header}>
-                <h1>{name}</h1>
+                <h1>{name.charAt(0).toUpperCase() + name.slice(1)}</h1>
                 <div className={styles.types}>
-                    {types.map(({ type }) => (
+                    {types?.map(({ type }) => (
                         <span key={type.name} className={`${styles.type} ${styles[type.name]}`}>
-                            {type.name}
+                            {type.name.charAt(0).toUpperCase() + type.name.slice(1)}
                         </span>
-                    ))}
+                    )) || <p>No types available</p>}
                 </div>
             </div>
             <div className={styles.image}>
                 {gifUrl ? (
                     <img src={gifUrl} alt={`${name} animated`} />
                 ) : (
-                    <p>No animated GIF available</p>
+                    <p>No image available</p>
                 )}
             </div>
             <div className={styles.stats}>
@@ -58,7 +59,7 @@ const Pokemon = ({ name, url }) => {
                             <div
                                 className={styles.statBar}
                                 style={{
-                                    width: `${(base_stat > 100 ? 100 : base_stat) / 100 * 100}%`,
+                                    width: `${Math.min(base_stat, 100)}%`,
                                     backgroundColor: getColorForStat(stat.name),
                                 }}
                             ></div>
@@ -68,16 +69,16 @@ const Pokemon = ({ name, url }) => {
                 ))}
             </div>
             <div className={styles.footer}>
-                <p>Height: {height / 10} m</p>
-                <p>Weight: {weight / 10} kg</p>
+                <p>Height: {(height / 10).toFixed(1)} m</p>
+                <p>Weight: {(weight / 10).toFixed(1)} kg</p>
                 <p>Base XP: {base_experience}</p>
             </div>
             <div className={styles.abilities}>
                 <h3>Abilities</h3>
                 <ul>
                     {abilities.map(({ ability }) => (
-                        <li key={ability.name}>{ability.name}</li>
-                    ))}
+                        <li key={ability.name}>{ability.name.charAt(0).toUpperCase() + ability.name.slice(1)}</li>
+                    )) || <p>No abilities available</p>}
                 </ul>
             </div>
         </div>
