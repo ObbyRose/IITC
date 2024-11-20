@@ -1,11 +1,13 @@
-    body {
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        background-color: #f8f9fa;
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color:rgb(39, 39, 39) ;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
     }
     .card {
         display: grid;
@@ -113,19 +115,19 @@
     /* Media Queries for Responsive Layout */
     @media (min-width: 425px) {
         .pokemonList {
-        grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(2, 1fr);
         }
     }
     
     @media (min-width: 768px) {
         .pokemonList {
-        grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(3, 1fr);
         }
     }
     
     @media (min-width: 1024px) {
         .pokemonList {
-        grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(4, 1fr);
         }
     }
     

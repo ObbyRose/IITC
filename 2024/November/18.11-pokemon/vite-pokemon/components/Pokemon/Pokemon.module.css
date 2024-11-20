@@ -5,7 +5,6 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f8f9fa;
 }
 
 .card {
@@ -13,16 +12,16 @@ body {
     grid-template-columns: repeat(1, 1fr);
     gap: 16px;
     padding: 16px;
-    max-width: 1200px;
     width: 100%;
+    height: 40.5rem;
     margin: 0 auto;
     justify-items: center;
     border-radius: 8px;
     transition: border 0.3s ease;
-}
-
-.card:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
 }
 
 .card.fire {
@@ -94,6 +93,7 @@ body {
 }
 
 .header h1 {
+    
     font-size: 24px;
     text-align: center;
 }
@@ -107,17 +107,90 @@ body {
 
 .type {
     background-color: #f0f0f0;
+    border: solid 1px rgb(39, 39, 39);
     padding: 4px 8px;
     border-radius: 4px;
+    margin-top: 8px;
     font-size: 14px;
+}
+
+.type.flying {
+    background-color: #87cefa99;
+}
+
+.type.fire {
+    background-color: #f08030;
+    color: #fff;
+}
+.type.water {
+    background-color: #6890f0;
+    color: #fff;
+}
+.type.grass {
+    background-color: #78c850;
+    color: #fff;
+}
+.type.electric {
+    background-color: #f8d030;
+    color: #000;
+}
+.type.normal {
+    background-color: #a8a878;
+    color: #000;
+}
+.type.ghost {
+    background-color: #705898;
+    color: #fff;
+}
+.type.bug {
+    background-color: #a8b820;
+    color: #000;
+}
+.type.fighting {
+    background-color: #c03028;
+    color: #fff;
+}
+.type.psychic {
+    background-color: #f85888;
+    color: #fff;
+}
+.type.ice {
+    background-color: #98d8d8;
+    color: #000;
+}
+.type.dragon {
+    background-color: #7038f8;
+    color: #fff;
+}
+.type.rock {
+    background-color: #b8a038;
+    color: #000;
+}
+.type.dark {
+    background-color: #705848;
+    color: #fff;
+}
+.type.steel {
+    background-color: #b8b8d0;
+    color: #000;
+}
+.type.fairy {
+    background-color: #ee99ac;
+    color: #000;
+}
+.type.ground {
+    background-color: #e0c068;
+    color: #000;
+}
+.type.poison {
+    background-color: #a040a0;
+    color: #fff;
 }
 
 .image img {
     width: 75px;
     height: 75px;
     object-fit: contain;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .stats {
@@ -134,13 +207,15 @@ body {
 }
 
 .statName {
-    width: 120px;
+    width: 100%;
     text-align: left;
 }
 
 .statBarContainer {
     width: 100%;
     background-color: #e0e0e0;
+    border: solid 1px black;
+    margin-left: 8px;
     border-radius: 8px;
     overflow: hidden;
     height: 10px;

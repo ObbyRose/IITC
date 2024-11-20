@@ -2,6 +2,25 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import styles from "./Pokemon.module.css";
 
+//Img import
+import fireImg from "/src/assets/fire_type_pokemon_go_wallpaper___qhd___by_elbarnzo_dfrc8g2.png";
+import waterImg from "/src/assets/water_type_pokemon_go_wallpaper___qhd___by_elbarnzo_dfq8w8w.png";
+import grassImg from "/src/assets/grass_type_pokemon_go_wallpaper___qhd___by_elbarnzo_dfqwup7.png";
+import electricImg from "/src/assets/electric_type_pokemon_go_wallpaper___qhd___by_elbarnzo_dfrnwtw.png";
+import normalImg from "/src/assets/normal_type_pokemon_go_wallpaper___qhd___by_elbarnzo_dfqn3ht.png";
+import ghostImg from "/src/assets/ghost_type_pokemon_go_wallpaper___qhd___by_elbarnzo_dfr2x1c.png";
+import bugImg from "/src/assets/bug_type_pokemon_go_wallpaper___qhd___by_elbarnzo_dfsf928.png";
+import fightingImg from "/src/assets/fighting_type_pokemon_go_wallpaper___qhd___by_elbarnzo_dfrf41z.png";
+import psychicImg from "/src/assets/psychic_type_pokemon_go_wallpaper___qhd___by_elbarnzo_dfqh5to.png";
+import iceImg from "/src/assets/ice_type_pokemon_go_wallpaper___qhd___by_elbarnzo_dfqpn6x.png";
+import dragonImg from "/src/assets/dragon_type_pokemon_go_wallpaper___qhd___by_elbarnzo_dfruokc.png";
+import rockImg from "/src/assets/rock_type_pokemon_go_wallpaper___qhd___by_elbarnzo_dfqdk3v.png";
+import darkImg from "/src/assets/dark_type_pokemon_go_wallpaper___qhd___by_elbarnzo_dfrxgkx.png";
+import steelImg from "/src/assets/steel_type_pokemon_go_wallpaper___qhd___by_elbarnzo_dfqbr77 (1).png";
+import fairyImg from "/src/assets/fairy_type_pokemon_go_wallpaper___qhd___by_elbarnzo_dfrlafa.png";
+import groundImg from "/src/assets/ground_type_pokemon_go_wallpaper___qhd___by_elbarnzo_dfqt8yd.png";
+import poisonImg from "/src/assets/poison_type_pokemon_go_wallpaper___qhd___by_elbarnzo_dfqkyl8.png";
+
 const Pokemon = ({ name, url }) => {
     const [details, setDetails] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -32,16 +51,43 @@ const Pokemon = ({ name, url }) => {
         sprites?.versions?.["generation-v"]?.["black-white"]?.animated?.front_default ||
         sprites?.front_default;
 
+        const typeToImageMap = {
+            fire: fireImg,
+            water: waterImg,
+            grass: grassImg,
+            electric: electricImg,
+            normal: normalImg,
+            ghost: ghostImg,
+            bug: bugImg,
+            fighting: fightingImg,
+            psychic: psychicImg,
+            ice: iceImg,
+            dragon: dragonImg,
+            rock: rockImg,
+            dark: darkImg,
+            steel: steelImg,
+            fairy: fairyImg,
+            ground: groundImg,
+            poison: poisonImg,
+        };
+
     return (
-        <div className={`${styles.card} ${styles[primaryType]}`}>
+        <div
+        className={`${styles.card}`}
+        style={{
+            backgroundImage: `url(${typeToImageMap[primaryType] || "/src/assets/default.png"})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+        }}
+    >
             <div className={styles.header}>
                 <h1>{name.charAt(0).toUpperCase() + name.slice(1)}</h1>
                 <div className={styles.types}>
-                    {types?.map(({ type }) => (
+                    {types.map(({ type }) => (
                         <span key={type.name} className={`${styles.type} ${styles[type.name]}`}>
-                            {type.name.charAt(0).toUpperCase() + type.name.slice(1)}
+                            {type.name}
                         </span>
-                    )) || <p>No types available</p>}
+                    ))}
                 </div>
             </div>
             <div className={styles.image}>
@@ -78,7 +124,7 @@ const Pokemon = ({ name, url }) => {
                 <ul>
                     {abilities.map(({ ability }) => (
                         <li key={ability.name}>{ability.name.charAt(0).toUpperCase() + ability.name.slice(1)}</li>
-                    )) || <p>No abilities available</p>}
+                    ))}
                 </ul>
             </div>
         </div>
