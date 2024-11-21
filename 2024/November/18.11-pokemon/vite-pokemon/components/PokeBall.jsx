@@ -5,20 +5,17 @@ import styles from "./PokeBall.module.css";
 
 const PokeBall = () => {
     const [pokemon, setPokemon] = useState([]);
-    const [nextPage, setNextPage] = useState(null);
+    const [displayedPokemon, setDisplayedPokemon] = useState([]);
     const [loading, setLoading] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
-    
-    const fetchData = async () => {
-        if (!nextPage) return;
+    const [displayLimit, setDisplayLimit] = useState(20);
+
+    const fetchAllPokemon = async () => {
         setLoading(true);
         try {
-            const { data } = await axios.get(nextPage);
-            const newPokemon = data.results.filter(
-                (newPoke) => !pokemon.some((existingPoke) => existingPoke.name === newPoke.name)
-            );
-            setPokemon((prevPokemon) => [...prevPokemon, ...newPokemon]);
-            setNextPage(data.next);
+            const { data: { results } } = await axios.get("https://pokeapi.co/api/v2/pokemon/?limit=1000");
+            setPokemon(results);
+            setDisplayedPokemon(results.slice(0, 20));
         } catch (error) {
             console.error("Error fetching Pokémon list:", error);
         } finally {
@@ -27,28 +24,23 @@ const PokeBall = () => {
     };
 
     useEffect(() => {
-        const fetchInitialData = async () => {
-            setLoading(true);
-            try {
-                const { data: { results, next } } = await axios.get("https://pokeapi.co/api/v2/pokemon/?limit=20");
-                setPokemon(results);
-                setNextPage(next);
-            } catch (error) {
-                console.error("Error fetching Pokémon list:", error);
-            } finally {
-                setLoading(false);
-            }
-        };
-        fetchInitialData();
+        fetchAllPokemon();
     }, []);
 
     const handleSearchChange = (e) => {
         setSearchQuery(e.target.value.toLowerCase());
     };
-    
-    const filteredPokemon = pokemon.filter(poke =>
-        poke.name.toLowerCase().includes(searchQuery)
-    );
+
+    useEffect(() => {
+        const filteredPokemon = pokemon.filter((poke) =>
+            poke.name.toLowerCase().includes(searchQuery)
+        );
+        setDisplayedPokemon(filteredPokemon.slice(0, displayLimit));
+    }, [searchQuery, pokemon, displayLimit]);
+
+    const handleLoadMore = () => {
+        setDisplayLimit((prevLimit) => prevLimit + 20);
+    };
 
     return (
         <div className={styles.card}>
@@ -60,16 +52,17 @@ const PokeBall = () => {
                 className={styles.searchBar}
             />
             <ul className={styles.pokemonList}>
-                {(searchQuery ? filteredPokemon : pokemon).map((poke, index) => (
+                {displayedPokemon.map((poke, index) => (
                     <li key={`${poke.name}-${index}`}>
                         <Pokemon name={poke.name} url={poke.url} />
                     </li>
                 ))}
             </ul>
-            {loading ? (
-                <p>Loading more Pokémon...</p>
-            ) : (
-                nextPage && <button onClick={fetchData}>Load More</button>
+            {loading && <p>Loading Pokémon...</p>}
+            {displayLimit < pokemon.length && (
+                <button onClick={handleLoadMore} className={styles.loadMoreButton}>
+                    Load More
+                </button>
             )}
         </div>
     );
