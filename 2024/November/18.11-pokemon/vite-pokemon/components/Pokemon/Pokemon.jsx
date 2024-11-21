@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./Pokemon.module.css";
 
-//Img import
+// Img imports for background
 import fireImg from "/src/assets/fire_type_pokemon_go_wallpaper___qhd___by_elbarnzo_dfrc8g2.png";
 import waterImg from "/src/assets/water_type_pokemon_go_wallpaper___qhd___by_elbarnzo_dfq8w8w.png";
 import grassImg from "/src/assets/grass_type_pokemon_go_wallpaper___qhd___by_elbarnzo_dfqwup7.png";
@@ -21,65 +22,86 @@ import fairyImg from "/src/assets/fairy_type_pokemon_go_wallpaper___qhd___by_elb
 import groundImg from "/src/assets/ground_type_pokemon_go_wallpaper___qhd___by_elbarnzo_dfqt8yd.png";
 import poisonImg from "/src/assets/poison_type_pokemon_go_wallpaper___qhd___by_elbarnzo_dfqkyl8.png";
 
-const Pokemon = ({ name, url }) => {
+const Pokemon = ({ name, url, id }) => {
     const [details, setDetails] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     const fetchPokemonDetails = async () => {
+        if (!url || typeof url !== "string" || !url.trim()) {
+            console.error("Invalid URL provided:", url);
+            setError("Invalid URL: URL is required to fetch Pokémon details.");
+            setLoading(false);
+            return;
+        }
+
         try {
+            console.log("Fetching data from:", url);
             const { data } = await axios.get(url);
             setDetails(data);
         } catch (error) {
-            console.error(`Error fetching details for ${name}:`, error);
+            console.error("Error during API request:", error);
+            setError(error.message || "An unknown error occurred");
         } finally {
             setLoading(false);
         }
     };
 
     useEffect(() => {
+        if (!url || typeof url !== "string" || !url.trim()) {
+            setError("Invalid URL provided");
+            setLoading(false);
+            return;
+        }
+
         fetchPokemonDetails();
     }, [url]);
 
     if (loading) return <p>Loading {name}...</p>;
-    if (!details) return <p>Error loading {name}. Please try again.</p>;
+    if (error) return <p>Error: {error}</p>;
 
     const { sprites, types, stats, abilities, height, weight, base_experience } = details;
-
     const primaryType = types?.[0]?.type?.name || "unknown";
 
     const gifUrl =
         sprites?.versions?.["generation-v"]?.["black-white"]?.animated?.front_default ||
         sprites?.front_default;
 
-        const typeToImageMap = {
-            fire: fireImg,
-            water: waterImg,
-            grass: grassImg,
-            electric: electricImg,
-            normal: normalImg,
-            ghost: ghostImg,
-            bug: bugImg,
-            fighting: fightingImg,
-            psychic: psychicImg,
-            ice: iceImg,
-            dragon: dragonImg,
-            rock: rockImg,
-            dark: darkImg,
-            steel: steelImg,
-            fairy: fairyImg,
-            ground: groundImg,
-            poison: poisonImg,
-        };
+    const typeToImageMap = {
+        fire: fireImg,
+        water: waterImg,
+        grass: grassImg,
+        electric: electricImg,
+        normal: normalImg,
+        ghost: ghostImg,
+        bug: bugImg,
+        fighting: fightingImg,
+        psychic: psychicImg,
+        ice: iceImg,
+        dragon: dragonImg,
+        rock: rockImg,
+        dark: darkImg,
+        steel: steelImg,
+        fairy: fairyImg,
+        ground: groundImg,
+        poison: poisonImg,
+    };
+
+    const handleCardClick = () => {
+        navigate(`/pokemon/${id}`);
+    };
 
     return (
         <div
-        className={`${styles.card}`}
-        style={{
-            backgroundImage: `url(${typeToImageMap[primaryType] || "/src/assets/default.png"})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-        }}
-    >
+            className={`${styles.card}`}
+            style={{
+                backgroundImage: `url(${typeToImageMap[primaryType] || "/src/assets/default.png"})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+            }}
+            onClick={handleCardClick}
+        >
             <div className={styles.header}>
                 <h1>{name.charAt(0).toUpperCase() + name.slice(1)}</h1>
                 <div className={styles.types}>
@@ -123,7 +145,9 @@ const Pokemon = ({ name, url }) => {
                 <h3>Abilities</h3>
                 <ul>
                     {abilities.map(({ ability }) => (
-                        <li key={ability.name}>{ability.name.charAt(0).toUpperCase() + ability.name.slice(1)}</li>
+                        <li key={ability.name}>
+                            {ability.name.charAt(0).toUpperCase() + ability.name.slice(1)}
+                        </li>
                     ))}
                 </ul>
             </div>
