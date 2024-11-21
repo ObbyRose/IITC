@@ -37,8 +37,10 @@
         <List>
             {navItems.map((item) => (
             <ListItem key={item} disablePadding>
-                <ListItemButton sx={{ textAlign: "center" }}>
-                <ListItemText primary={item} />
+                <ListItemButton sx={{ textAlign: "center"}}>
+                    <Link key={item} to={item === "Home" ? "/" : item.toLowerCase()}>
+                    <ListItemText sx={{ textAlign: "center", color: "#000" }} primary={item} />
+                    </Link>
                 </ListItemButton>
             </ListItem>
             ))}
