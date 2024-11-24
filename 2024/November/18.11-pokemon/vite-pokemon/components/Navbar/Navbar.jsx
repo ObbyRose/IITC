@@ -16,6 +16,7 @@ import Button from "@mui/material/Button";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
+import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
 const navItems = ["Home", "About"];
@@ -77,11 +78,13 @@ const drawer = (
     <Divider />
     <List>
             {navItems.map((item) => (
+                <Link to={`/${item.toLowerCase()}`}>
                 <ListItem key={item} disablePadding>
                 <ListItemButton sx={{ textAlign: "center" }}>
                     <ListItemText primary={item} />
                 </ListItemButton>
             </ListItem>
+                </Link>
         ))}
     </List>
     </Box>
@@ -123,9 +126,11 @@ return (
         </Search>
         <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
+                <Link to={`/${item.toLowerCase()}`}>
                 <Button key={item} sx={{ color: "#fff" }}>
                     {item}
                 </Button>
+                </Link>
             ))}
         </Box>
         </Toolbar>
