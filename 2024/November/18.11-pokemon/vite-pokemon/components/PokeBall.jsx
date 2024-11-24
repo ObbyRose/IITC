@@ -35,7 +35,6 @@ const handleSearchChange = useCallback((e) => {
 }, []);
 
 useEffect(() => {
-    console.log("Filtered Pokémon List:", displayedPokemon);
     const filteredPokemon = pokemon.filter((poke) =>
         poke.name.toLowerCase().includes(searchQuery)
     );

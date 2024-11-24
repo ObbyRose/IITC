@@ -37,7 +37,6 @@ const Pokemon = ({ name, url, id }) => {
         }
 
         try {
-            console.log("Fetching data from:", url);
             const { data } = await axios.get(url);
             setDetails(data);
         } catch (error) {
