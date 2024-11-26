@@ -10,7 +10,7 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-        <Route path="/" element={<Navigate to="/home" replace />} />
+          <Route path="/" element={<Navigate to="/home" replace />} />
           <Route path='/home' element={<PokeBall />}/>
           <Route path='/about' element={<AboutPage />}/>
           <Route path="/pokemon/:id" element={<Pokemon />} />
