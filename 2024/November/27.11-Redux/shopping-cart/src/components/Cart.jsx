@@ -5,7 +5,7 @@ const Cart = () => {
     console.log(cart);
 
     const handleRemoveItem = () => {}
-    
+
     return(
         <div>
             <h2>My cart</h2>

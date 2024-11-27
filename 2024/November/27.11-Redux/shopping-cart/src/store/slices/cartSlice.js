@@ -1,19 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { act } from "react";
 
 const cartSlice = createSlice({
     name:'cart',
-    initialState:{ items: [
-        {id: 1234, name:"Coca Cola Bottle", price: 8.90, quantity: 3, totalItemPrice: 26.70},
-        {id: 5849, name:"Mana Hama", price: 7, quantity: 3, totalItemPrice: 21}
-    ], totalQuantity: 6, totalPrice: 47.70 },
+    initialState:{ items: [], totalQuantity: 0, totalPrice: 0 },
     reducers:{
         addItem: (state, action) => {
             const existingItem = state.items.find((item) => item.id === action.payload.id)
             if (!existingItem) {
                 state.items.push(action.payload)
-                state.totalQuantity++
-                state.totalPrice += action.payload.price
+            } else{
+                existingItem.quantity += action.payload.quantity
+                existingItem.totalItemPrice += action.payload.totalItemPrice
             }
+
+            state.items.forEach((item) => {
+                state.totalPrice += item.totalItemPrice
+                state.totalQuantity += item.quantity
+            })
         },
         removeItem: (state, action) => {
             //1. Find item Index
