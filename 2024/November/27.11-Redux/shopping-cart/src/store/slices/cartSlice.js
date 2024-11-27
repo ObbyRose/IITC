@@ -13,19 +13,16 @@ const cartSlice = createSlice({
                 existingItem.quantity += action.payload.quantity
                 existingItem.totalItemPrice += action.payload.totalItemPrice
             }
-
-            state.items.forEach((item) => {
-                state.totalPrice += item.totalItemPrice
-                state.totalQuantity += item.quantity
-            })
+                state.totalQuantity +=action.payload.quantity
+                state.totalPrice +=action.payload.totalItemPrice
         },
         removeItem: (state, action) => {
             //1. Find item Index
             const itemIndex = state.items.findIndex((item) => item.id === action.payload)
             //2. Filter Index
-            const items = state.items[itemIndex]
+            const item = state.items[itemIndex]
             state.totalQuantity -= item.quantity
-            state.totalPrice -= item.price
+            state.totalPrice -= item.totalItemPrice * item.quantity
             state.items.splice(itemIndex, 1)
         }
     }
