@@ -71,16 +71,16 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center", backgroundColor:"rgb(42,42,42)", height: "100%" }}>
         <Typography variant="h6" sx={{ my: 2 }}>
-            Pokemon Pokedex
+            <img src="../../src/assets/pngegg.png" alt="" srcset="" style={{width: "15rem"}} />
         </Typography>
     <Divider />
     <List>
             {navItems.map((item) => (
                 <Link to={`/${item.toLowerCase()}`}>
                 <ListItem key={item} disablePadding>
-                <ListItemButton sx={{ textAlign: "center" }}>
+                <ListItemButton sx={{ textAlign: "center", color: "white"}}>
                     <ListItemText primary={item} />
                 </ListItemButton>
                 </ListItem>
