@@ -109,9 +109,9 @@ return (
         <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" }, }}
         >
-        Pokemon Pokedex
+            <img src="../../src/assets/pngegg.png" alt="" srcset="" style={{width: "15rem"}} />
         </Typography>
         <Search>
             <SearchIconWrapper>
