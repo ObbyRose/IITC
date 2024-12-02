@@ -17,7 +17,7 @@ import iceImg from "/src/assets/ice_type_pokemon_go_wallpaper___qhd___by_elbarnz
 import dragonImg from "/src/assets/dragon_type_pokemon_go_wallpaper___qhd___by_elbarnzo_dfruokc.png";
 import rockImg from "/src/assets/rock_type_pokemon_go_wallpaper___qhd___by_elbarnzo_dfqdk3v.png";
 import darkImg from "/src/assets/dark_type_pokemon_go_wallpaper___qhd___by_elbarnzo_dfrxgkx.png";
-import steelImg from "/src/assets/steel_type_pokemon_go_wallpaper___qhd___by_elbarnzo_dfqbr77 (1).png";
+import steelImg from "/src/assets/steel_type_pokemon_go_wallpaper___qhd___by_elbarnzo_dfqbr77.png";
 import fairyImg from "/src/assets/fairy_type_pokemon_go_wallpaper___qhd___by_elbarnzo_dfrlafa.png";
 import groundImg from "/src/assets/ground_type_pokemon_go_wallpaper___qhd___by_elbarnzo_dfqt8yd.png";
 import poisonImg from "/src/assets/poison_type_pokemon_go_wallpaper___qhd___by_elbarnzo_dfqkyl8.png";
@@ -88,7 +88,8 @@ const Pokemon = ({ name, url, id }) => {
     };
 
     const handleCardClick = () => {
-        navigate(`/pokemon/${id}`);
+        console.log(`Navigating to details for ID: ${url}`);
+        navigate("/" + url);
     };
 
     return (

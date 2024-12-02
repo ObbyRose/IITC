@@ -1,52 +1,52 @@
-import axios from "axios";
-import { useEffect, useState, useCallback } from "react";
-import Pokemon from "./Pokemon/Pokemon.jsx";
-import styles from "./PokeBall.module.css";
-import DrawerAppBar from "../components/Navbar/Navbar.jsx";
+import axios from 'axios';
+import { useEffect, useState, useCallback } from 'react';
+import { Link } from 'react-router-dom';
+import Pokemon from './Pokemon/Pokemon.jsx';
+import styles from './PokeBall.module.css';
+import DrawerAppBar from '../components/Navbar/Navbar.jsx';
 
 const PokeBall = () => {
     const [pokemon, setPokemon] = useState([]);
     const [displayedPokemon, setDisplayedPokemon] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [searchQuery, setSearchQuery] = useState("");
+    const [searchQuery, setSearchQuery] = useState('');
     const [displayLimit, setDisplayLimit] = useState(20);
 
-const fetchAllPokemon = async () => {
-    setLoading(true);
-    try {
-    const {
-        data: { results },
-    } = await axios.get("https://pokeapi.co/api/v2/pokemon/?limit=1000");
-    setPokemon(results);
-    setDisplayedPokemon(results.slice(0, 20));
-    } catch (error) {
-        console.error("Error fetching Pokémon list:", error);
-    } finally {
-        setLoading(false);
-    }
-};
+    const fetchAllPokemon = async () => {
+        setLoading(true);
+        try {
+            const {
+                data: { results },
+                } = await axios.get('https://pokeapi.co/api/v2/pokemon/?limit=1000');
+                setPokemon(results);
+                setDisplayedPokemon(results.slice(0, 20));
+            } catch (error) {
+                console.error('Error fetching Pokémon list:', error);
+            } finally {
+                setLoading(false);
+        }
+    };
 
-useEffect(() => {
+    useEffect(() => {
     fetchAllPokemon();
-}, []);
+    }, []);
 
-const handleSearchChange = useCallback((e) => {
+    const handleSearchChange = useCallback((e) => {
     setSearchQuery(e.target.value.toLowerCase());
-}, []);
+    }, []);
 
-useEffect(() => {
+    useEffect(() => {
     const filteredPokemon = pokemon.filter((poke) =>
         poke.name.toLowerCase().includes(searchQuery)
     );
+        setDisplayedPokemon(filteredPokemon.slice(0, displayLimit));
+    }, [searchQuery, pokemon, displayLimit]);
 
-setDisplayedPokemon(filteredPokemon.slice(0, displayLimit));
-}, [searchQuery, pokemon, displayLimit]);
+    const handleLoadMore = () => {
+        setDisplayLimit((prevLimit) => prevLimit + 20);
+    };
 
-const handleLoadMore = () => {
-    setDisplayLimit((prevLimit) => prevLimit + 20);
-};
-
-return (
+    return (
     <div className={styles.card}>
         <DrawerAppBar
             searchQuery={searchQuery}
@@ -54,18 +54,20 @@ return (
         />
         <ul className={styles.pokemonList}>
             {displayedPokemon.map((poke, index) => (
-            <li key={`${poke.name}-${index}`}>
-            <Pokemon name={poke.name} url={poke.url} />
-            </li>
-            ))}
+        <li key={poke.name + index}>
+            <Link to={`/pokemon/${poke.name}`}>
+                <Pokemon name={poke.name} url={poke.url} id={poke.id} />
+            </Link>
+        </li>
+        ))}
         </ul>
         {loading && <p>Loading Pokémon...</p>}
         {displayLimit < pokemon.length && (
-        <button onClick={handleLoadMore} className={styles.loadMoreButton}>
+            <button onClick={handleLoadMore} className={styles.loadMoreButton}>
             Load More
-        </button>
+            </button>
         )}
-    </div>
+        </div>
     );
 };
 
