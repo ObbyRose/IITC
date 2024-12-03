@@ -10,12 +10,14 @@
 h2 {
     text-align: center;
     margin-bottom: 20px;
+    color: rgb(39, 39, 39)
 }
 
 .form {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    color: rgb(39, 39, 39)
 }
 
 
