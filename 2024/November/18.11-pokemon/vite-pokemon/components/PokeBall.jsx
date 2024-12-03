@@ -6,13 +6,12 @@ import styles from './PokeBall.module.css';
 import DrawerAppBar from '../components/Navbar/Navbar.jsx';
 
 const PokeBall = () => {
-    const [pokemon, setPokemon] = useState([]); // All fetched Pokémon
-    const [displayedPokemon, setDisplayedPokemon] = useState([]); // Pokémon to display
+    const [pokemon, setPokemon] = useState([]);
+    const [displayedPokemon, setDisplayedPokemon] = useState([]);
     const [loading, setLoading] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const [displayLimit, setDisplayLimit] = useState(20);
 
-    // Fetch Pokémon from the API
     const fetchAllPokemon = async () => {
         setLoading(true);
         try {

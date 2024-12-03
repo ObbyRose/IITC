@@ -102,7 +102,6 @@ body {
         margin: 4px 0;
     }
     
-    /* Media Queries for Responsive Layout */
     @media (min-width: 425px) {
         .pokemonList {
             grid-template-columns: repeat(2, 1fr);

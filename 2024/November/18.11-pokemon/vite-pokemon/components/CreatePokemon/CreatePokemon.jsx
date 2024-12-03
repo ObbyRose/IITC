@@ -8,32 +8,40 @@ const CreatePokemon = () => {
     const [abilities, setAbilities] = useState([]);
     const [height, setHeight] = useState('');
     const [weight, setWeight] = useState('');
+    const [baseExperience, setBaseExperience] = useState('');
+    const [stats, setStats] = useState({ hp: '', attack: '', defense: '' });
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
 
     const handleNameChange = (e) => setName(e.target.value);
-
     const handleTypesChange = (e) => {
         setTypes([...e.target.selectedOptions].map((option) => option.value));
     };
-
     const handleAbilitiesChange = (e) => {
         setAbilities([...e.target.selectedOptions].map((option) => option.value));
     };
-
     const handleHeightChange = (e) => setHeight(e.target.value);
     const handleWeightChange = (e) => setWeight(e.target.value);
+    const handleBaseExperienceChange = (e) => setBaseExperience(e.target.value);
+    const handleStatChange = (e) => {
+        const { name, value } = e.target;
+        setStats((prevStats) => ({
+            ...prevStats,
+            [name]: value,
+        }));
+    };
+
     const generateRandomID = () => {
         return Math.random().toString(36).substring(2, 10) + Math.random().toString(36).substring(2, 10);
     };
-    
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!name || !types.length || !abilities.length || !height || !weight) {
+        if (!name || !types.length || !abilities.length || !height || !weight || !baseExperience || !stats.hp || !stats.attack || !stats.defense) {
             setError('All fields are required!');
             return;
         }
-    
+
         setLoading(true);
         try {
             const newPokemon = {
@@ -42,18 +50,25 @@ const CreatePokemon = () => {
                 abilities,
                 height,
                 weight,
+                base_experience: baseExperience,
+                stats,
                 id: generateRandomID(),
-                url: '',
+                image: '/src/assets/default.png',
             };
-    
-            const storedPokemons = JSON.parse(localStorage.getItem('newPokemon')) || [];
+
+            const storedPokemons = JSON.parse(localStorage.getItem('customPokemons')) || [];
+            
             storedPokemons.push(newPokemon);
-            localStorage.setItem('newPokemon', JSON.stringify(storedPokemons));
+            
+            localStorage.setItem('customPokemons', JSON.stringify(storedPokemons));
+
             setName('');
             setTypes([]);
             setAbilities([]);
             setHeight('');
             setWeight('');
+            setBaseExperience('');
+            setStats({ hp: '', attack: '', defense: '' });
             setError('');
         } catch (err) {
             setError('Error creating Pokémon. Please try again.');
@@ -148,6 +163,57 @@ const CreatePokemon = () => {
                             onChange={handleWeightChange}
                             required
                             placeholder="Enter weight in kilograms"
+                        />
+                    </div>
+
+                    <div className={styles.formGroup}>
+                        <label htmlFor="baseExperience">Base Experience</label>
+                        <input
+                            type="number"
+                            id="baseExperience"
+                            value={baseExperience}
+                            onChange={handleBaseExperienceChange}
+                            required
+                            placeholder="Enter base experience"
+                        />
+                    </div>
+
+                    <div className={styles.formGroup}>
+                        <label htmlFor="hp">HP</label>
+                        <input
+                            type="number"
+                            id="hp"
+                            name="hp"
+                            value={stats.hp}
+                            onChange={handleStatChange}
+                            required
+                            placeholder="Enter HP"
+                        />
+                    </div>
+
+                    <div className={styles.formGroup}>
+                        <label htmlFor="attack">Attack</label>
+                        <input
+                            type="number"
+                            id="attack"
+                            name="attack"
+                            value={stats.attack}
+                            onChange={handleStatChange}
+                            required
+                            placeholder="Enter Attack"
+                        />
+                    </div>
+
+                    <div className={styles.formGroup}>
+                        <label htmlFor="defense">Defense</label>
+                        <input
+                            type="number"
+                            id="defense"
+                            name="defense"
+                            value={stats.defense}
+                            onChange={handleStatChange}
+                            required
+                            placeholder="Enter Defense"
                         />
                     </div>
 

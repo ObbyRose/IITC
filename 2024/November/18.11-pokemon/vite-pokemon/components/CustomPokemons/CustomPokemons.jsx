@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import styles from "./CustomPokemons.module.css";
-import DrawerAppBar from "../Navbar/Navbar";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import styles from './CustomPokemons.module.css';
+import DrawerAppBar from '../Navbar/Navbar';
 
-// Img imports for background types
 import fireImg from "/src/assets/fire_type_pokemon_go_wallpaper___qhd___by_elbarnzo_dfrc8g2.png";
 import waterImg from "/src/assets/water_type_pokemon_go_wallpaper___qhd___by_elbarnzo_dfq8w8w.png";
 import grassImg from "/src/assets/grass_type_pokemon_go_wallpaper___qhd___by_elbarnzo_dfqwup7.png";
@@ -22,13 +21,45 @@ import fairyImg from "/src/assets/fairy_type_pokemon_go_wallpaper___qhd___by_elb
 import groundImg from "/src/assets/ground_type_pokemon_go_wallpaper___qhd___by_elbarnzo_dfqt8yd.png";
 import poisonImg from "/src/assets/poison_type_pokemon_go_wallpaper___qhd___by_elbarnzo_dfqkyl8.png";
 
+const getColorForStat = (statName) => {
+    switch (statName) {
+        case "hp":
+            return "#ff5c5c";
+        case "attack":
+            return "#ff9b3d";
+        case "defense":
+            return "#4caf50";
+        case "special-attack":
+            return "#ff4081";
+        case "special-defense":
+            return "#3f51b5";
+        case "speed":
+            return "#03a9f4";
+        default:
+            return "#9e9e9e";
+    }
+};
+
 const CustomPokemons = () => {
     const [customPokemons, setCustomPokemons] = useState([]);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        const storedPokemons = JSON.parse(localStorage.getItem("customPokemons") || "[]");
+        const storedPokemons = JSON.parse(localStorage.getItem('customPokemons')) || [];
         setCustomPokemons(storedPokemons);
+        setLoading(false);
     }, []);
+
+    const handleSearchChange = (e) => {
+        setSearchQuery(e.target.value);
+    };
+
+    const filteredPokemons = customPokemons.filter((pokemon) =>
+        pokemon.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
     const typeToImageMap = {
         fire: fireImg,
@@ -50,67 +81,75 @@ const CustomPokemons = () => {
         poison: poisonImg,
     };
 
-    const handleCardClick = (id) => {
-        console.log(`Navigating to details for Custom Pokémon ID: ${id}`);
+    const handleCardClick = (pokemonUrl) => {
+        navigate(pokemonUrl);
     };
 
+    if (loading) return <p>Loading custom Pokémon...</p>;
+    if (error) return <p>Error: {error}</p>;
+
     return (
-        <div>
-            <DrawerAppBar />
-        <div className={styles.customPokemonsContainer}>
-            <h1>Custom Pokémon Collection</h1>
+        <div className={styles.container}>
+            <DrawerAppBar searchQuery={searchQuery} onSearchChange={handleSearchChange} />
             <div className={styles.pokemonList}>
-                {customPokemons.map((pokemon) => {
-                    const { id, name, types, height, weight, abilities, gifUrl } = pokemon;
-                    const primaryType = types?.[0]?.name || "normal";
-                    return (
+                {filteredPokemons.length > 0 ? (
+                    filteredPokemons.map((pokemon) => (
                         <div
-                            className={styles.card}
-                            key={id}
+                            key={pokemon.id}
+                            className={styles.pokemonCard}
                             style={{
-                                backgroundImage: `url(${typeToImageMap[primaryType] || "/src/assets/default.png"})`,
-                                backgroundSize: "cover",
-                                backgroundPosition: "center",
+                                backgroundImage: `url(${typeToImageMap[pokemon.types[0]] || "/src/assets/default.png"})`,
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'center',
                             }}
-                            onClick={() => handleCardClick(id)}
+                            onClick={() => handleCardClick(pokemon.url)}
                         >
                             <div className={styles.header}>
-                                <h1>{name.charAt(0).toUpperCase() + name.slice(1)}</h1>
+                                <h1>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h1>
                                 <div className={styles.types}>
-                                    {types.map((type) => (
-                                        <span key={type.name} className={`${styles.type} ${styles[type.name]}`}>
-                                            {type.name}
+                                    {pokemon.types.map((type) => (
+                                        <span key={type} className={`${styles.type} ${styles[type]}`}>
+                                            {type}
                                         </span>
                                     ))}
                                 </div>
                             </div>
-                            <div className={styles.image}>
-                                {gifUrl ? (
-                                    <img src={gifUrl} alt={`${name} animated`} />
-                                ) : (
-                                    <p>No image available</p>
-                                )}
-                            </div>
-                            <div className={styles.footer}>
-                                <p>Height: {(height / 10).toFixed(1)} m</p>
-                                <p>Weight: {(weight / 10).toFixed(1)} kg</p>
-                            </div>
-                            <div className={styles.abilities}>
-                                <h3>Abilities</h3>
-                                <ul>
-                                    {abilities?.map((ability) => (
-                                        <li key={ability.name}>
-                                            {ability.name.charAt(0).toUpperCase() + ability.name.slice(1)}
-                                        </li>
+                            <div className={styles.details}>
+                                <p><strong>Height:</strong> {pokemon.height} m</p>
+                                <p><strong>Weight:</strong> {pokemon.weight} kg</p>
+                                <p><strong>Base Experience:</strong> {pokemon.base_experience}</p>
+
+                                <div className={styles.stats}>
+                                    {Object.keys(pokemon.stats).map((statName) => (
+                                        <div key={statName} className={styles.statRow}>
+                                            <p><strong>{statName.charAt(0).toUpperCase() + statName.slice(1)}:</strong> {pokemon.stats[statName]}</p>
+                                            <div
+                                                className={styles.statBar}
+                                                style={{
+                                                    backgroundColor: getColorForStat(statName),
+                                                    width: `${Math.min(pokemon.stats[statName], 100)}%`, // Ensure the bar does not exceed 100%
+                                                }}
+                                            ></div>
+                                        </div>
                                     ))}
-                                </ul>
+                                </div>
+
+                                <div className={styles.abilities}>
+                                    <strong>Abilities:</strong>
+                                    <ul>
+                                        {pokemon.abilities && pokemon.abilities.map((ability, index) => (
+                                            <li key={index}>{ability}</li>
+                                        ))}
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    );
-                })}
+                    ))
+                ) : (
+                    <p>No custom Pokémon found.</p>
+                )}
             </div>
         </div>
-    </div>
     );
 };
 
