@@ -6,15 +6,15 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: rgb(39, 39, 39);
     font-family: 'Courier New', Courier, monospace;
     font-weight: 600;
 }
 
 .card {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 16px;
+    display: flex;
+    justify-content:center ;
+    align-items: center;
+    flex-direction: column;
     padding: 16px;
     max-width: 1200px;
     width: 100%;
@@ -22,6 +22,8 @@ body {
     justify-items: center;
     border-radius: 16px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    color: white;
+    font-weight: 600;
 }
 
 .fire {
@@ -131,9 +133,8 @@ body {
 }
 
 .image img {
-    width: 100px;
-    height: 100px;
-    height: auto;
+    width: 85px;
+    height: 85px;
     border-radius: 8px;
     margin-top: 16px;
 }

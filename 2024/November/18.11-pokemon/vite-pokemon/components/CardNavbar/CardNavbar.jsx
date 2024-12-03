@@ -22,7 +22,7 @@ const drawerWidth = 240;
 const navItems = ["Home", "About", "Add-Pokemon", "Custom-Pokemons"];
 
 function DrawerAppBar(props) {
-    const { window, searchQuery, onSearchChange } = props;
+    const { window} = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
 
     const handleDrawerToggle = () => {
@@ -113,18 +113,6 @@ function DrawerAppBar(props) {
                     >
                         <Link to={"/home"}><img src="../../src/assets/pngegg.png" alt="Logo" srcSet="" style={{ width: "15rem" }} /> </Link> 
                     </Typography>
-                    <Search>
-                        <SearchIconWrapper>
-                            <SearchIcon />
-                        </SearchIconWrapper>
-                        <StyledInputBase
-                            autoFocus
-                            placeholder="Search Pokémon"
-                            inputProps={{ "aria-label": "search" }}
-                            value={searchQuery}
-                            onChange={onSearchChange}
-                        />
-                    </Search>
                     <Box sx={{ display: { xs: "none", sm: "block" } }}>
                         {navItems.map((item) => (
                             <Link key={item} to={`/${item.toLowerCase()}`}>
@@ -165,8 +153,6 @@ function DrawerAppBar(props) {
 
 DrawerAppBar.propTypes = {
     window: PropTypes.func,
-    searchQuery: PropTypes.string.isRequired,
-    onSearchChange: PropTypes.func.isRequired,
 };
 
 export default DrawerAppBar;

@@ -89,7 +89,7 @@ const Pokemon = ({ name, url, id }) => {
 
     const handleCardClick = () => {
         console.log(`Navigating to details for ID: ${url}`);
-        navigate("/" + url);
+        navigate(url);
     };
 
     return (
