@@ -40,12 +40,16 @@ const TaskList: React.FC = () => {
       </div>
       
       <div className="task-list">
-        {tasks.map((task: Task) => (
-          <TaskCard key={task.id} task={task} onDelete={handleDelete} />
-        ))}
+        {!Array.isArray(tasks) ? (
+          <p>No tasks available</p>
+        ) : (
+          tasks.map((task: Task) => (
+            <TaskCard key={task.id} task={task} onDelete={handleDelete} />
+          ))
+        )}
       </div>
     </div>
   );
 };
 
-export default TaskList;
+export default TaskList
