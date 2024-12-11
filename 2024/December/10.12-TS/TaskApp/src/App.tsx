@@ -1,13 +1,18 @@
-import { useState } from 'react'
-import './App.css'
+import React from 'react';
+import { TaskProvider } from './context/TaskContext';
+import TaskList from './components/TaskList';  
+import AddTaskForm from './components/AddTaskForm';  
 
-function App() {
-
+const App: React.FC = () => {
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <TaskProvider>
+      <div className="App">
+        <h1>Task Manager</h1>
+        <AddTaskForm />
+        <TaskList />
+      </div>
+    </TaskProvider>
+  );
+};
 
-export default App
+export default App;
