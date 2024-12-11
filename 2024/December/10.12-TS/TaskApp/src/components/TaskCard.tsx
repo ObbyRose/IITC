@@ -8,7 +8,7 @@ interface TaskCardProps {
 
 const TaskCard: React.FC<TaskCardProps> = ({ task, onDelete }) => {
   return (
-    <div className="flex justify-center align-center">
+    <div className="task-card">
       <h2>{task.title}</h2>
       <p>{task.description}</p>
       <p>Due Date: {task.dueDate}</p>
