@@ -68,7 +68,7 @@ export const TaskProvider: React.FC<TaskProviderProps> = ({ children }) => {
     axios
       .delete(`http://localhost:3000/tasks/${taskId}`)
       .then(() => {
-        setTasks(tasks.filter((task) => task.id !== taskId)); // Use strict comparison with string
+        setTasks(tasks.filter((task) => task.id !== taskId));
         setError(null);
       })
       .catch((err) => {

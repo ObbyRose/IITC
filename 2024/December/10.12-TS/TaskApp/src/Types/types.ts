@@ -15,5 +15,4 @@ export interface TaskContextType {
     filterTasks: (status?: string, priority?: string) => void;
     loading: boolean;
     error: string | null;
-  }
-  
+}
