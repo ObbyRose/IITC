@@ -18,7 +18,7 @@ export const TaskProvider: React.FC<TaskProviderProps> = ({ children }) => {
     axios.get('http://localhost:3000/tasks')
       .then(response => {
         setTasks(response.data);
-        setError(null); // clear error if data is fetched successfully
+        setError(null);
       })
       .catch(() => {
         const storedTasks = localStorage.getItem('tasks');
